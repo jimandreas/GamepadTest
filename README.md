@@ -13,6 +13,17 @@ https://www.trust.com/en/product/22258-gxt-590-bosi-bluetooth-wireless-gamepad
 
 ## Issues
 
+### Compatibility
+
+This compatibility matrix writeup is the first sign that I have seen
+that Google is paying attention to gamepad issues.
+
+That is a good sign.  Unfortunately for Android - looks like it is in Android 10
+that things have changed.  And I have Android 9 on my Sony Xperia phone, LOL.   I will
+update after I get my hands on an Android 10 based phone.
+
+https://support.google.com/stadia/answer/9578631?hl=en
+
 ### Connection as "Input Device" is flakey
 
 What I have found from casual experimentation is that the TRUST GXT 590 toggles between
