@@ -1,0 +1,54 @@
+# Project information
+site_name: 'Gamepad Test'
+site_description: 'An Android App to do Gamepad Testing'
+site_author: 'Jim Andreas'
+site_url: 'https://jimandreas.github.io/GamepadTest'
+
+# Repository
+repo_name: 'jimandreas/GamepadTest'
+repo_url: 'https://github.com/jimandreas/GamepadTest'
+
+# Copyright
+copyright: 'Copyright &copy; 2020 Jim Andreas'
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+# Customization
+#extra:
+#  manifest: 'manifest.webmanifest'
+#  social:
+#    - type: 'github'
+#      link: 'https://github.com/jimandreas'
+#    - type: 'twitter'
+#      link: 'https://twitter.com/jimandreasdev'
+#    - type: 'linkedin'
+#      link: 'https://linkedin.com/in/jimandreas'
+
+# Page tree
+nav:
+  - Home: index.md
+  - Technical Details: TechDetails.md
+  - Links: Links.md
+
+# Google Analytics
+#google_analytics:
+#  - 'UA-XXXXXXXX-X'
+#  - 'auto'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+

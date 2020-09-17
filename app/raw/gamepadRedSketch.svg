@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m145.700012,125.100006c-31,6 -56.99996,100.012626 -53,132c3.99996,31.987374 13,85 13,86c0,1 10,51 9.299988,50.899994c-0.700012,-0.100006 17.700012,4.100006 17.700012,4.100006c0,0 17,2 17,0c0,-2 14,-14 14,-15c0,-1 23,-40 20,-45c-3,-5 12,-29 12,-33c0,-4 12,-35 12,-35c0,0 8,-16 7.299988,-16.100006c-0.700012,-0.100006 15.700012,-7.899994 21.700012,-6.899994c6,1 27,1 32,1c5,0 28,0 27.299988,-0.100006c-0.700012,-0.100006 34.700012,8.100006 35.700012,8.100006c1,0 7,20 8,22c1,2 1,35 7,38c6,3 11,42 12,42c1,0 4,26 7,28c3,2 10,1 14,1c4,0 25,2 26,-3c1,-5 19,-21 19,-29c0,-8 8,-31 9,-42c1,-11 12,-55 10,-64c-2,-9 -3,-70 -4,-63c-1,7 -13,-36 -15,-37c-2,-1 -20,-28 -20.700012,-28.100006c-0.700012,-0.100006 -39.299988,-3.899994 -45.299988,-4.899994c-6,-1 -85,-4 -85.700012,-4.100006c-0.700012,-0.100006 -96.299988,7.100006 -127.299988,13.100006z" fill="#FF0000" id="svg_1" stroke="#000000" stroke-width="5"/>
+  <ellipse cx="160.200012" cy="170.100006" fill="#020202" id="svg_2" rx="23.499999" ry="25" stroke="#000000" stroke-width="5"/>
+  <ellipse cx="383.700012" cy="251.100006" fill="#020202" id="svg_3" rx="23.499999" ry="25" stroke="#000000" stroke-width="5"/>
+  <path d="m139.700012,212.100006l21.299988,-1.100006l-1,23l20,0l1,15l-23,1l-2,17c0,0 -19.299988,0.100006 -18.299988,-0.899994c1,-1 1,-21 0.299988,-21.100006c-0.700012,-0.100006 -21.299988,-0.899994 -22,-1c-0.700012,-0.100006 -2.299988,-12.899994 2,-15c4.299988,-2.100006 20.700012,-3.899994 20,-4c-0.700012,-0.100006 -4.299988,-26.899994 1.700012,-12.899994z" fill="#020202" id="svg_4" stroke="#000000" stroke-width="5"/>
+  <text fill="#000000" font-family="serif" font-size="35" font-weight="bold" id="svg_5" stroke="#000000" stroke-width="0" text-anchor="middle" x="361.700012" xml:space="preserve" y="153.100006">Y</text>
+  <text fill="#000000" font-family="serif" font-size="35" font-weight="bold" id="svg_6" stroke="#000000" stroke-width="0" style="cursor: move;" text-anchor="middle" x="315.700012" xml:space="preserve" y="187.100002">X</text>
+  <text fill="#000000" font-family="serif" font-size="35" font-weight="bold" id="svg_7" stroke="#000000" stroke-width="0" style="cursor: move;" text-anchor="middle" x="394.700012" xml:space="preserve" y="194.100002">B</text>
+  <text fill="#000000" font-family="serif" font-size="35" font-weight="bold" id="svg_8" stroke="#000000" stroke-width="0" style="cursor: move;" text-anchor="middle" x="355.700012" xml:space="preserve" y="218.100006">A</text>
+ </g>
+</svg>

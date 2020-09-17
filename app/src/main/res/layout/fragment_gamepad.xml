@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jimandreas.gamepadtest.ui.gamepad.GamepadViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.gamepad.GamepadFragment">
+
+
+        <TextView
+            android:id="@+id/text_gamepad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.jimandreas.gamepadtest.ui.customviews.JoystickView
+            android:id="@+id/joystickLeft"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.255" />
+
+        <com.jimandreas.gamepadtest.ui.customviews.JoystickView
+            android:id="@+id/joystickRight"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rTrigger"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="32dp"
+            android:background="#F60505"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/lTrigger"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="50dp"
+            android:background="#FC0808"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rBumper"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="#F6FF05"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rTrigger" />
+
+        <View
+            android:id="@+id/lBumper"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:background="#FCFF08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lTrigger" />
+
+        <View
+            android:id="@+id/dpadCenter"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="300dp"
+            android:background="#FC0808"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dpadLeft"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#FC0808"
+            app:layout_constraintBottom_toBottomOf="@+id/dpadCenter"
+            app:layout_constraintEnd_toStartOf="@+id/dpadCenter"
+            app:layout_constraintTop_toTopOf="@+id/dpadCenter" />
+
+
+        <View
+            android:id="@+id/dpadRight"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#FC0808"
+            app:layout_constraintBottom_toBottomOf="@+id/dpadCenter"
+            app:layout_constraintStart_toEndOf="@+id/dpadCenter"
+            app:layout_constraintTop_toTopOf="@+id/dpadCenter" />
+
+        <View
+            android:id="@+id/dpadUp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#FC0808"
+            app:layout_constraintBottom_toTopOf="@+id/dpadCenter"
+            app:layout_constraintEnd_toEndOf="@+id/dpadCenter"
+            app:layout_constraintStart_toStartOf="@+id/dpadCenter" />
+
+        <View
+            android:id="@+id/dpadDown"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#FC0808"
+            app:layout_constraintEnd_toEndOf="@+id/dpadCenter"
+            app:layout_constraintStart_toStartOf="@+id/dpadCenter"
+            app:layout_constraintTop_toBottomOf="@+id/dpadCenter" />
+
+        <View
+            android:id="@+id/viewTemp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="#EF0505"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
