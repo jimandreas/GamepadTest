@@ -49,10 +49,10 @@ class GamepadFragment : Fragment(), Observer<Int> {
         // root = inflater.inflate(R.layout.fragment_gamepad, container, false)
         binding.viewModel = gamepadViewModel
 
-        // val textView: TextView = root.findViewById(R.id.text_gamepad)
-        gamepadViewModel.text.observe(viewLifecycleOwner, {
-            binding.textGamepad.text = it
-        })
+//        // val textView: TextView = root.findViewById(R.id.text_gamepad)
+//        gamepadViewModel.text.observe(viewLifecycleOwner, {
+//            binding.textGamepad.text = it
+//        })
 
         // val joystickViewLeft : JoystickView = root.findViewById(R.id.joystickLeft)
         gamepadViewModel.joyLeft.observe(viewLifecycleOwner, {
