@@ -97,7 +97,7 @@ class GamepadFragment : Fragment(), Observer<Int> {
         val colorToSet = if (keypair.second) {
             Color.GREEN
         } else {
-            Color.RED
+            Color.BLACK
         }
 
         var v : View = binding.root
@@ -137,9 +137,9 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
     private fun updateTriggerColor(trig: View, pressIntensity: Float) {
         if (pressIntensity != 0f) {
-            trig.setBackgroundColor(Color.GRAY)
-        } else {
             trig.setBackgroundColor(Color.RED)
+        } else {
+            trig.setBackgroundColor(Color.BLACK)
         }
     }
 

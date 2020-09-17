@@ -45,37 +45,45 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <View
+        <Button
             android:id="@+id/rTrigger"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#F60505"
+            android:background="#000000"
+            android:text="@string/rt"
+            android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/rBumper"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <View
+        <Button
             android:id="@+id/lTrigger"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#FC0808"
+            android:background="#000000"
+            android:text="@string/lt"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toStartOf="@+id/lBumper"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <View
+        <Button
             android:id="@+id/rBumper"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="80dp"
-            android:background="#F6FF05"
+            android:background="#000000"
+            android:text="@string/lb"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <View
+        <Button
             android:id="@+id/lBumper"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="80dp"
-            android:background="#FCFF08"
+            android:background="#000000"
+            android:text="@string/lb"
+            android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -85,7 +93,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="80dp"
-            android:background="#FC0808"
+            android:background="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView" />
 
@@ -93,7 +101,7 @@
             android:id="@+id/dpadLeft"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#FC0808"
+            android:background="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/dpadCenter"
             app:layout_constraintEnd_toStartOf="@+id/dpadCenter"
             app:layout_constraintTop_toTopOf="@+id/dpadCenter" />
@@ -103,7 +111,7 @@
             android:id="@+id/dpadRight"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#FC0808"
+            android:background="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/dpadCenter"
             app:layout_constraintStart_toEndOf="@+id/dpadCenter"
             app:layout_constraintTop_toTopOf="@+id/dpadCenter" />
@@ -112,7 +120,7 @@
             android:id="@+id/dpadUp"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#FC0808"
+            android:background="#000000"
             app:layout_constraintBottom_toTopOf="@+id/dpadCenter"
             app:layout_constraintEnd_toEndOf="@+id/dpadCenter"
             app:layout_constraintStart_toStartOf="@+id/dpadCenter" />
@@ -121,7 +129,7 @@
             android:id="@+id/dpadDown"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#FC0808"
+            android:background="#000000"
             app:layout_constraintEnd_toEndOf="@+id/dpadCenter"
             app:layout_constraintStart_toStartOf="@+id/dpadCenter"
             app:layout_constraintTop_toBottomOf="@+id/dpadCenter" />
