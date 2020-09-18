@@ -39,6 +39,10 @@ class GamepadViewModel : ViewModel(), UpdateJoystickData, GamepadButton.GamepadK
     }
     val triggerRight: LiveData<Float> = _triggerRight
 
+    /**
+     * The Int is the keycode
+     * If the Boolean is true it is a keydown, otherwise keyup
+     */
     private val _buttonDown = MutableLiveData<Pair<Int, Boolean>>().apply {
         value = Pair(0, false)
     }

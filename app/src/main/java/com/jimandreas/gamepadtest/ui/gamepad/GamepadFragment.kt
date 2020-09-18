@@ -48,22 +48,14 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
         gamepadViewModel =
             ViewModelProvider(this).get(GamepadViewModel::class.java)
-        // root = inflater.inflate(R.layout.fragment_gamepad, container, false)
         binding.viewModel = gamepadViewModel
 
-//        // val textView: TextView = root.findViewById(R.id.text_gamepad)
-//        gamepadViewModel.text.observe(viewLifecycleOwner, {
-//            binding.textGamepad.text = it
-//        })
-
-        // val joystickViewLeft : JoystickView = root.findViewById(R.id.joystickLeft)
         gamepadViewModel.joyLeft.observe(viewLifecycleOwner, {
             val joy = it
             Log.i("JOYSTICK FRAGMENT", joy.first.toString() + " " + joy.second.toString())
             binding.joystickLeft.updatePosition(joy.first, joy.second)
         })
 
-        // val joystickViewRight : JoystickView = root.findViewById(R.id.joystickRight)
         gamepadViewModel.joyRight.observe(viewLifecycleOwner, {
             val joy = it
             Log.i("JOYSTICK FRAGMENT", joy.first.toString() + " " + joy.second.toString())
@@ -81,14 +73,10 @@ class GamepadFragment : Fragment(), Observer<Int> {
         })
 
         gamepadViewModel.buttonDown.observe(viewLifecycleOwner, {
-
             handleButtonChange(it)
         })
 
-
-//        val viewThing: View = root.findViewById(R.id.dpadDown)
-//        viewThing.setBackgroundColor(Color.GRAY)
-
+        // kudos to Dhaval Patel: https://stackoverflow.com/a/52619840/3853712
         redButtonDrawable =
             AppCompatResources.getDrawable(binding.root.context, R.drawable.button_bg_round_red)
         blueButtonDrawable =
