@@ -26,7 +26,8 @@
             app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_gamepadgreyoutline" />
+            app:srcCompat="@drawable/ic_gamepadgreyoutline"
+            android:contentDescription="TODO" />
 
         <com.jimandreas.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickLeft"
@@ -43,7 +44,7 @@
             android:layout_height="75dp"
 
             android:layout_marginTop="96dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="80dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -140,13 +141,61 @@
 
         <Button
             android:id="@+id/yButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="88dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="72dp"
+            android:background="@drawable/button_bg_round_blue"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="2dp"
             android:text="@string/yButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/rTrigger" />
+
+        <Button
+            android:id="@+id/xButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/button_bg_round_blue"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="2dp"
+            android:text="@string/xButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/yButton"
+            app:layout_constraintTop_toBottomOf="@+id/yButton" />
+
+        <Button
+            android:id="@+id/aButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/button_bg_round_blue"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="2dp"
+            android:text="@string/aButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/bButton"
+            app:layout_constraintTop_toBottomOf="@+id/bButton" />
+
+        <Button
+            android:id="@+id/bButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/button_bg_round_blue"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="2dp"
+            android:text="@string/bButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/yButton"
+            app:layout_constraintTop_toBottomOf="@+id/yButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

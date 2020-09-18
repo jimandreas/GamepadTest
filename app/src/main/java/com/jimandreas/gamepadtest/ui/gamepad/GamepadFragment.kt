@@ -4,6 +4,7 @@ package com.jimandreas.gamepadtest.ui.gamepad
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.hardware.input.InputManager
 import android.os.Bundle
 import android.util.Log
@@ -11,19 +12,20 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.databinding.FragmentGamepadBinding
-import com.jimandreas.gamepadtest.ui.customviews.JoystickView
 
 
 class GamepadFragment : Fragment(), Observer<Int> {
 
     private lateinit var gamepadViewModel: GamepadViewModel
     private lateinit var binding: FragmentGamepadBinding
+    private var redButtonDrawable: Drawable? = null
+    private var blueButtonDrawable: Drawable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,20 +89,31 @@ class GamepadFragment : Fragment(), Observer<Int> {
 //        val viewThing: View = root.findViewById(R.id.dpadDown)
 //        viewThing.setBackgroundColor(Color.GRAY)
 
+        redButtonDrawable =
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.button_bg_round_red)
+        blueButtonDrawable =
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.button_bg_round_blue)
+
         return binding.root
     }
 
 
-
     private fun handleButtonChange(keypair: Pair<Int, Boolean>) {
         val keycode = keypair.first
-        val colorToSet = if (keypair.second) {
+        val downIfTrue = keypair.second
+        val colorToSet = if (downIfTrue) {
             Color.GREEN
         } else {
             Color.BLACK
         }
 
-        var v : View = binding.root
+        val drawableToSet = if (downIfTrue) {
+            redButtonDrawable
+        } else {
+            blueButtonDrawable
+        }
+
+        var v: View = binding.root
         when (keycode) {
             KeyEvent.KEYCODE_DPAD_LEFT -> v = binding.dpadLeft
             KeyEvent.KEYCODE_DPAD_RIGHT -> v = binding.dpadRight
@@ -111,13 +124,13 @@ class GamepadFragment : Fragment(), Observer<Int> {
             KeyEvent.KEYCODE_BUTTON_L1 -> v = binding.lBumper
             KeyEvent.KEYCODE_BUTTON_R1 -> v = binding.rBumper
 
-            KeyEvent.KEYCODE_BUTTON_A -> Log.i("FRAG", "A")
-            KeyEvent.KEYCODE_BUTTON_B -> Log.i("FRAG", "B")
+            KeyEvent.KEYCODE_BUTTON_A -> binding.aButton.background = drawableToSet
+            KeyEvent.KEYCODE_BUTTON_B -> binding.bButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_C -> Log.i("FRAG", "C")
 
 
-            KeyEvent.KEYCODE_BUTTON_X -> Log.i("FRAG", "X")
-            KeyEvent.KEYCODE_BUTTON_Y -> Log.i("FRAG", "Y")
+            KeyEvent.KEYCODE_BUTTON_X -> binding.xButton.background = drawableToSet
+            KeyEvent.KEYCODE_BUTTON_Y -> binding.yButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_Z -> Log.i("FRAG", "Z")
 
             KeyEvent.KEYCODE_BUTTON_THUMBL -> binding.lBumper.setBackgroundColor(View.INVISIBLE)
