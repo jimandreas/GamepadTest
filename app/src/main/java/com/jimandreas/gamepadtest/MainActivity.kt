@@ -109,18 +109,33 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     }
 
+    /**
+     * handle the key events -
+     *    Don't pass the key event to the framework
+     *    or else the Bottom Navigation gets active
+     *    when it should not.
+     */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        val button = GamepadServices.gamepadButtonService
-        button.forwardButtonDown(keyCode, event)
-        return super.onKeyDown(keyCode, event)
+        GamepadServices.gamepadButtonService.forwardButtonDown(keyCode, event)
+        return true
+        // return super.onKeyDown(keyCode, event)
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
-        val button = GamepadServices.gamepadButtonService
-        button.forwardButtonUp(keyCode, event)
-        return super.onKeyUp(keyCode, event)
+        GamepadServices.gamepadButtonService.forwardButtonUp(keyCode, event)
+        return true
+        // return super.onKeyUp(keyCode, event)
     }
 
+    /**
+     * handle the events from the:
+     *  -> joysticks
+     *  -> Dpad (they are motion events, I don't see key Events from the TRUST MXP gamepad)
+     *  -> Triggers
+     *
+     *  The historical position events don't seem to have much value.
+     *  Maybe they are more immportant for a stylus and graphix pad or somethimg.
+     */
     override fun onGenericMotionEvent(event: MotionEvent): Boolean {
 
         val joyst = GamepadServices.gamepadJoystickService

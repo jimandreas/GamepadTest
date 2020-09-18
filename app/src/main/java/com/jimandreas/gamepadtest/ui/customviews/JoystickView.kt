@@ -80,8 +80,7 @@ class JoystickView @JvmOverloads constructor(
 
     /**
      * Renders view content: an outer circle to serve as the "dial",
-     * and a smaller black circle to server as the indicator.
-     * The position of the indicator is based on fanSpeed.
+     * and a smaller blue circle to server as the indicator.
      *
      * @param canvas The canvas on which the background will be drawn.
      */
@@ -92,12 +91,11 @@ class JoystickView @JvmOverloads constructor(
         paint.color = Color.BLACK
         canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, paint)
 
-
         paint.color = Color.BLUE
         canvas.drawCircle(
             xCoord,
             yCoord,
-            radius/4, paint)
+            radius/2, paint)
 
     }
 

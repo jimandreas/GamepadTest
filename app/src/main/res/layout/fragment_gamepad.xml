@@ -21,78 +21,82 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_gamepadgreyoutline" />
 
         <com.jimandreas.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickLeft"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="36dp"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <com.jimandreas.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickRight"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
 
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="60dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <Button
             android:id="@+id/rTrigger"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="#000000"
             android:text="@string/rt"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/rBumper"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/rBumper" />
 
         <Button
             android:id="@+id/lTrigger"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="#000000"
             android:text="@string/lt"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toStartOf="@+id/lBumper"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/lBumper" />
 
         <Button
             android:id="@+id/rBumper"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="80dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="110dp"
             android:background="#000000"
             android:text="@string/lb"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/lBumper"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
             android:background="#000000"
             android:text="@string/lb"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/dpadCenter"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginBottom="88dp"
             android:background="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView" />
@@ -133,6 +137,16 @@
             app:layout_constraintEnd_toEndOf="@+id/dpadCenter"
             app:layout_constraintStart_toStartOf="@+id/dpadCenter"
             app:layout_constraintTop_toBottomOf="@+id/dpadCenter" />
+
+        <Button
+            android:id="@+id/yButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="88dp"
+            android:text="@string/yButton"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/rTrigger" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

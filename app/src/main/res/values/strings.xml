@@ -9,4 +9,9 @@
     <string name="rb">RB</string>
     <string name="lt">LT</string>
     <string name="rt">RT</string>
+
+    <string name="yButton">Y</string>
+    <string name="xButton">X</string>
+    <string name="bButton">B</string>
+    <string name="aButton">A</string>
 </resources>
