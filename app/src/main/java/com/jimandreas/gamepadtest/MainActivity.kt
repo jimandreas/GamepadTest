@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_VARIABLE", "unused", "UNUSED_PARAMETER")
+
 package com.jimandreas.gamepadtest
 
 import android.content.Context
@@ -9,7 +11,6 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -68,9 +69,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         }
 
-
-
-
         /**
          * END
          */
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_gamepad, R.id.navigation_notifications
+                R.id.navigation_search, R.id.navigation_gamepad, R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -90,7 +88,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
             when(destination.id) {
-                R.id.navigation_home -> {
+                R.id.navigation_search -> {
                     toolBar.setDisplayShowTitleEnabled(false)
 
                 }

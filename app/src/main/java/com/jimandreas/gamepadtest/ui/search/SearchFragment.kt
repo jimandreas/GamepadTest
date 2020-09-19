@@ -1,4 +1,6 @@
-package com.jimandreas.gamepadtest.ui.home
+@file:Suppress("UnnecessaryVariable")
+
+package com.jimandreas.gamepadtest.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jimandreas.gamepadtest.R
 
-class HomeFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var searchViewModel: SearchViewModel
     //val joystickHandler = GamepadJoysticks()
 
     override fun onCreateView(
@@ -20,13 +22,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        searchViewModel =
+            ViewModelProvider(this).get(SearchViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_search, container, false)
+//        val textView: TextView = root.findViewById(R.id.text_search)
+//        searchViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
 
 //        root.setOnGenericMotionListener(View.OnGenericMotionListener { v, event ->
 //
