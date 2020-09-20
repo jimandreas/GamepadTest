@@ -50,8 +50,8 @@
 
         <Button
             android:id="@+id/rTrigger"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:background="@drawable/button_bg_oval_blue"
             android:text="@string/rt"
             android:textColor="@android:color/background_light"
@@ -61,8 +61,8 @@
 
         <Button
             android:id="@+id/lTrigger"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:background="@drawable/button_bg_oval_blue"
             android:text="@string/lt"
             android:textColor="@android:color/background_light"
@@ -72,8 +72,8 @@
 
         <Button
             android:id="@+id/rBumper"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="110dp"
             android:background="@drawable/button_bg_oval_blue"
@@ -85,9 +85,9 @@
 
         <Button
             android:id="@+id/lBumper"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="80dp"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_bg_oval_blue"
             android:text="@string/lb"
