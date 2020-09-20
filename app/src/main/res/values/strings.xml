@@ -5,6 +5,8 @@
     <string name="title_settings">Settings</string>
 
 
+    <!--Gamepad frament strings-->
+
     <string name="lb">LB</string>
     <string name="rb">RB</string>
     <string name="lt">LT</string>
@@ -14,8 +16,10 @@
     <string name="xButton">X</string>
     <string name="bButton">B</string>
     <string name="aButton">A</string>
+    <string name="imagedesc">Gamepad Test</string>
 
     <!--About activity strings-->
+
     <string name="about">About</string>
     <string name="title_activity_about">About GamepadTest</string>
 
@@ -111,4 +115,5 @@
     </string>
     <string name="action_about_activity">Settings</string>
     <string name="settings_window">Settings Window</string>
+
 </resources>

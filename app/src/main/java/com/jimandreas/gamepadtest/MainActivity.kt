@@ -163,8 +163,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return super.onMenuOpened(featureId, menu)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        Log.i("BACK", "back pressed")
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        Log.i("BACK", "back pressed")
+//    }
 }

@@ -24,8 +24,14 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
     private lateinit var gamepadViewModel: GamepadViewModel
     private lateinit var binding: FragmentGamepadBinding
+
     private var redButtonDrawable: Drawable? = null
     private var blueButtonDrawable: Drawable? = null
+
+    private var redOvalButtonDrawable: Drawable? = null
+    private var blueOvalButtonDrawable: Drawable? = null
+
+    private lateinit var bcontext: Context
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +55,7 @@ class GamepadFragment : Fragment(), Observer<Int> {
         gamepadViewModel =
             ViewModelProvider(this).get(GamepadViewModel::class.java)
         binding.viewModel = gamepadViewModel
+        bcontext = binding.root.context
 
         gamepadViewModel.joyLeft.observe(viewLifecycleOwner, {
             val joy = it
@@ -78,9 +85,14 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
         // kudos to Dhaval Patel: https://stackoverflow.com/a/52619840/3853712
         redButtonDrawable =
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.button_bg_round_red)
+            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_red)
         blueButtonDrawable =
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.button_bg_round_blue)
+            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_blue)
+
+        redOvalButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_oval_red)
+        blueOvalButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_blue)
 
         return binding.root
     }
@@ -95,11 +107,19 @@ class GamepadFragment : Fragment(), Observer<Int> {
             Color.BLACK
         }
 
+        // for "normal" buttons
         val drawableToSet = if (downIfTrue) {
             redButtonDrawable
         } else {
             blueButtonDrawable
         }
+        // for Triggers and Bumpers
+        val drawableBTToSet = if (downIfTrue) {
+            redOvalButtonDrawable
+        } else {
+            blueOvalButtonDrawable
+        }
+
 
         var v: View = binding.root
         when (keycode) {
@@ -109,8 +129,8 @@ class GamepadFragment : Fragment(), Observer<Int> {
             KeyEvent.KEYCODE_DPAD_DOWN -> v = binding.dpadDown
             KeyEvent.KEYCODE_DPAD_CENTER -> v = binding.dpadCenter
 
-            KeyEvent.KEYCODE_BUTTON_L1 -> v = binding.lBumper
-            KeyEvent.KEYCODE_BUTTON_R1 -> v = binding.rBumper
+            KeyEvent.KEYCODE_BUTTON_L1 -> binding.lBumper.background = drawableBTToSet
+            KeyEvent.KEYCODE_BUTTON_R1 -> binding.rBumper.background = drawableBTToSet
 
             KeyEvent.KEYCODE_BUTTON_A -> binding.aButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_B -> binding.bButton.background = drawableToSet
@@ -138,9 +158,9 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
     private fun updateTriggerColor(trig: View, pressIntensity: Float) {
         if (pressIntensity != 0f) {
-            trig.setBackgroundColor(Color.RED)
+            trig.background = redOvalButtonDrawable
         } else {
-            trig.setBackgroundColor(Color.BLACK)
+            trig.background = blueOvalButtonDrawable
         }
     }
 

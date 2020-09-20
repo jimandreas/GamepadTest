@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_search_24px"
-        android:title="@string/title_search" />
-
-    <item
         android:id="@+id/navigation_gamepad"
         android:icon="@drawable/ic_gamepad_36px"
         android:title="@string/title_gamepad" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_search_24px"
+        android:title="@string/title_search" />
 
     <item
         android:id="@+id/navigation_settings"

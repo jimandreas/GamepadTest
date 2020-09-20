@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_gamepadgreyoutline"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/imagedesc" />
 
         <com.jimandreas.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickLeft"
@@ -52,9 +52,10 @@
             android:id="@+id/rTrigger"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#000000"
+            android:background="@drawable/button_bg_oval_blue"
             android:text="@string/rt"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/rBumper"
             app:layout_constraintTop_toTopOf="@+id/rBumper" />
 
@@ -62,9 +63,10 @@
             android:id="@+id/lTrigger"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#000000"
+            android:background="@drawable/button_bg_oval_blue"
             android:text="@string/lt"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/lBumper"
             app:layout_constraintTop_toTopOf="@+id/lBumper" />
 
@@ -74,9 +76,10 @@
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="110dp"
-            android:background="#000000"
-            android:text="@string/lb"
-            android:textColor="@android:color/white"
+            android:background="@drawable/button_bg_oval_blue"
+            android:text="@string/rb"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,9 +89,10 @@
             android:layout_height="40dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="8dp"
-            android:background="#000000"
+            android:background="@drawable/button_bg_oval_blue"
             android:text="@string/lb"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 

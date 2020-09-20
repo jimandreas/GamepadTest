@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_search">
-
-    <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.jimandreas.gamepadtest.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+    app:startDestination="@+id/navigation_gamepad">
 
     <fragment
         android:id="@+id/navigation_gamepad"
         android:name="com.jimandreas.gamepadtest.ui.gamepad.GamepadFragment"
         android:label="@string/title_gamepad"
         tools:layout="@layout/fragment_gamepad" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.jimandreas.gamepadtest.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_settings"
