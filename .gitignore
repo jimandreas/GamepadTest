@@ -43,5 +43,9 @@ _sandbox
 *~
 *.swp
 
+# signing for release version
+gradle/signing.properties
+
+
 
 

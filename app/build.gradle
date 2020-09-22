@@ -20,10 +20,15 @@ android {
         dataBinding = true
     }
 
+    signingConfigs {
+        release
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -34,6 +39,29 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+// signing solution courtesy of http://gist.github.com/gabrielemariotti/6856974
+
+Properties props = new Properties()
+def propFile = new File('gradle/signing.properties')
+if (propFile.canRead()) {
+    props.load(new FileInputStream(propFile))
+
+    if (props != null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    } else {
+        println 'gradle/signing.properties found but some entries are missing'
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println 'gradle/signing.properties not found'
+    android.buildTypes.release.signingConfig = null
+}
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
