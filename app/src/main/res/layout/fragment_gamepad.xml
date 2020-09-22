@@ -87,7 +87,7 @@
             android:id="@+id/lBumper"
             android:layout_width="50dp"
             android:layout_height="30dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_bg_oval_blue"
             android:text="@string/lb"
@@ -200,6 +200,29 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/yButton"
             app:layout_constraintTop_toBottomOf="@+id/yButton" />
+
+        <ImageView
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/xButton"
+            app:layout_constraintTop_toBottomOf="@+id/rBumper"
+            app:srcCompat="@drawable/ic_table_rows_black_24dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/joystickLeft"
+            app:layout_constraintTop_toBottomOf="@+id/rBumper"
+            app:srcCompat="@drawable/ic_gamepad_squares"
+            tools:ignore="ContentDescription" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

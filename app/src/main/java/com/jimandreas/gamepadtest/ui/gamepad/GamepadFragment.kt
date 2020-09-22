@@ -31,6 +31,12 @@ class GamepadFragment : Fragment(), Observer<Int> {
     private var redOvalButtonDrawable: Drawable? = null
     private var blueOvalButtonDrawable: Drawable? = null
 
+    private var blueStartButtonDrawable: Drawable? = null
+    private var redStartButtonDrawable: Drawable? = null
+
+    private var blueBackButtonDrawable: Drawable? = null
+    private var redBackButtonDrawable: Drawable? = null
+
     private lateinit var bcontext: Context
 
     override fun onCreateView(
@@ -94,6 +100,16 @@ class GamepadFragment : Fragment(), Observer<Int> {
         blueOvalButtonDrawable =
             AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_blue)
 
+        blueStartButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.ic_table_rows_black_24dp)
+        redStartButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.ic_table_rows_red)
+
+        blueBackButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.ic_gamepad_squares)
+        redBackButtonDrawable =
+            AppCompatResources.getDrawable(bcontext, R.drawable.ic_gamepad_squares_red)
+
         return binding.root
     }
 
@@ -120,6 +136,20 @@ class GamepadFragment : Fragment(), Observer<Int> {
             blueOvalButtonDrawable
         }
 
+        // for Back button
+        val drawableBackButton = if (downIfTrue) {
+            redBackButtonDrawable
+        } else {
+            blueBackButtonDrawable
+        }
+
+        // for Start button
+        val drawableStartButton = if (downIfTrue) {
+            redStartButtonDrawable
+        } else {
+            blueStartButtonDrawable
+        }
+
 
         var v: View = binding.root
         when (keycode) {
@@ -132,6 +162,9 @@ class GamepadFragment : Fragment(), Observer<Int> {
             KeyEvent.KEYCODE_BUTTON_L1 -> binding.lBumper.background = drawableBTToSet
             KeyEvent.KEYCODE_BUTTON_R1 -> binding.rBumper.background = drawableBTToSet
 
+            KeyEvent.KEYCODE_BUTTON_START -> binding.startButton.setImageDrawable(drawableStartButton)
+            KeyEvent.KEYCODE_BACK -> binding.backButton.setImageDrawable(drawableBackButton)
+
             KeyEvent.KEYCODE_BUTTON_A -> binding.aButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_B -> binding.bButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_C -> Log.i("FRAG", "C")
@@ -141,8 +174,8 @@ class GamepadFragment : Fragment(), Observer<Int> {
             KeyEvent.KEYCODE_BUTTON_Y -> binding.yButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_Z -> Log.i("FRAG", "Z")
 
-            KeyEvent.KEYCODE_BUTTON_THUMBL -> binding.lBumper.setBackgroundColor(View.INVISIBLE)
-            KeyEvent.KEYCODE_BUTTON_THUMBR -> binding.rBumper.setBackgroundColor(Color.GREEN)
+            KeyEvent.KEYCODE_BUTTON_THUMBL -> binding.joystickLeft.updateIndicator(downIfTrue)
+            KeyEvent.KEYCODE_BUTTON_THUMBR -> binding.joystickRight.updateIndicator(downIfTrue)
 
 
 //            else -> Log.i("FRAG", "Other $keycode")

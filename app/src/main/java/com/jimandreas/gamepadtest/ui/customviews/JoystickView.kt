@@ -22,13 +22,14 @@
  * https://github.com/googlecodelabs/android-kotlin-drawing-custom-views
  *
  */
+@file:Suppress("unused", "UNUSED_PARAMETER")
+
 package com.jimandreas.gamepadtest.ui.customviews
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import kotlin.math.max
 import kotlin.math.min
 
 
@@ -40,6 +41,7 @@ class JoystickView @JvmOverloads constructor(
 
     private var xCoord = 1f
     private var yCoord = 1f
+    private var doRedIndicator = false
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         // Paint styles used for rendering are initialized here. This
@@ -91,7 +93,12 @@ class JoystickView @JvmOverloads constructor(
         paint.color = Color.BLACK
         canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, paint)
 
-        paint.color = Color.BLUE
+        if (doRedIndicator) {
+            paint.color = Color.RED
+        } else {
+            paint.color = Color.BLUE
+        }
+
         canvas.drawCircle(
             xCoord,
             yCoord,
@@ -107,6 +114,10 @@ class JoystickView @JvmOverloads constructor(
         xCoord = x * maxDisplacement + centerX
         yCoord = y * maxDisplacement + centerY
         invalidate()
+    }
+
+    fun updateIndicator(doRedIn: Boolean) {
+        doRedIndicator = doRedIn
     }
 
 

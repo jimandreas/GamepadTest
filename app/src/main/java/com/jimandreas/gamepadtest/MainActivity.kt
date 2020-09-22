@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
                 val descriptor = dev.descriptor
                 Log.i("INPUT", descriptor)
                 val keymap = dev.keyCharacterMap
-                val keytype= dev.keyboardType
+                val keytype = dev.keyboardType
                 val number = dev.controllerNumber
                 deviceArray.add(dev)
             }
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
-            when(destination.id) {
+            when (destination.id) {
                 R.id.navigation_search -> {
                     toolBar.setDisplayShowTitleEnabled(false)
 
@@ -114,6 +114,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
      *    when it should not.
      */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        handleSystemKeys(keyCode, event)
         GamepadServices.gamepadButtonService.forwardButtonDown(keyCode, event)
         return true
     }
@@ -152,8 +153,26 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return super.onMenuOpened(featureId, menu)
     }
 
-    override fun onBackPressed() {
-        finish()
-        super.onBackPressed()
+    /**
+     * Examine key events for system functions.
+     *
+     * TODO: vector back key to one fragment first, then exit.  Right now just exit
+     *
+     */
+    private fun handleSystemKeys(keyCode: Int, event: KeyEvent?) {
+        if (event == null) {
+            return
+        }
+        val source = event.source
+        val flags = event.flags
+        val sys = KeyEvent.FLAG_FROM_SYSTEM
+
+        if (source == 257) {  // not from any game controller
+            if ((flags and sys) == sys) { // is a system keycode
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    finish()
+                }
+            }
+        }
     }
 }
