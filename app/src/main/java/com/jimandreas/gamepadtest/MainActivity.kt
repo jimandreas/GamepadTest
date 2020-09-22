@@ -116,13 +116,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         GamepadServices.gamepadButtonService.forwardButtonDown(keyCode, event)
         return true
-        // return super.onKeyDown(keyCode, event)
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
         GamepadServices.gamepadButtonService.forwardButtonUp(keyCode, event)
         return true
-        // return super.onKeyUp(keyCode, event)
     }
 
     /**
@@ -142,16 +140,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return if (event.source and InputDevice.SOURCE_JOYSTICK == InputDevice.SOURCE_JOYSTICK
             && event.action == MotionEvent.ACTION_MOVE
         ) {
-//
-//            // Process the movements starting from the
-//            // earliest historical position in the batch
-//            (0 until event.historySize).forEach { i ->
-//                // Process the event at historical position i
-//                joyst.processJoystickInput(event, i)
-//            }
-//
-//            // Process the current movement sample in the batch (position -1)
-            joyst.processJoystickInput(event, -1)
+            joyst.processJoystickInput(event)
             true
         } else {
             super.onGenericMotionEvent(event)
@@ -163,8 +152,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return super.onMenuOpened(featureId, menu)
     }
 
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        Log.i("BACK", "back pressed")
-//    }
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
+    }
 }

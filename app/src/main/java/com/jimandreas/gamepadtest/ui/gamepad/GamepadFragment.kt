@@ -145,7 +145,7 @@ class GamepadFragment : Fragment(), Observer<Int> {
             KeyEvent.KEYCODE_BUTTON_THUMBR -> binding.rBumper.setBackgroundColor(Color.GREEN)
 
 
-            else -> Log.i("FRAG", "Other $keycode")
+//            else -> Log.i("FRAG", "Other $keycode")
         }
         if (v != binding.root) {
             v.setBackgroundColor(colorToSet)

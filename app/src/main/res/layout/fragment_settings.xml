@@ -24,17 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/settings_appname_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="@string/app_name"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.378"
-            app:layout_constraintStart_toEndOf="@+id/gamepadImage"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
 
         <LinearLayout
@@ -55,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"
-                android:text="@string/app_name"
+                android:text="@string/about_this_app"
                 android:textSize="30sp" />
 
             <View

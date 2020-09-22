@@ -12,10 +12,14 @@ class GamepadButton {
     var keyListener: GamepadKeyCallback? = null
 
     fun forwardButtonDown(keyCode: Int, event: KeyEvent?) {
+        val logger = GamepadServices.gamepadLoggerService
+        logger.logKeyEventDown(keyCode)
         keyListener?.onKeyDown(keyCode, event)
     }
 
     fun forwardButtonUp(keyCode: Int, event: KeyEvent?) {
+        val logger = GamepadServices.gamepadLoggerService
+        logger.logKeyEventUp(keyCode)
         keyListener?.onKeyUp(keyCode, event)
     }
 

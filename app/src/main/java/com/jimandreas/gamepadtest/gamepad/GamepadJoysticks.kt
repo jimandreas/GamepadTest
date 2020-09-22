@@ -19,6 +19,20 @@ interface UpdateJoystickData {
 }
 
 class GamepadJoysticks() {
+    var listener: UpdateJoystickData? = null
+
+    private var leftX: Float = 0f
+    private var leftY: Float = 0f
+    private var rightX: Float = 0f
+    private var rightY: Float = 0f
+
+    private var lTrigger: Float = 0f
+    private var rTrigger: Float = 0f
+
+    private var dPadX: Float = 0f
+    private var dPadY: Float = 0f
+
+    val logger = GamepadServices.gamepadLoggerService
 
     init {
         getDeviceInfo()
@@ -35,61 +49,25 @@ class GamepadJoysticks() {
             str.append("name: " + dev.name)
             vib = dev.vibrator
             str.append("has vib: " + vib.hasVibrator())
-            if (vib.hasVibrator()) {
-                vib.vibrate(1000)
-            }
+            str.append("\n")
+
         }
-
+        Log.i("GAMEPAD DEVS:",  "$str")
     }
 
-    interface JoysticksCallback {
-        fun onJoysticksUpdate(left: Pair<Float, Float>, right: Pair<Float, Float>)
-        fun onJoysticksAvailability(available: Boolean)
-    }
-
-    var listener: UpdateJoystickData? = null
-
-    private var leftX: Float = 0f
-    private var leftY: Float = 0f
-    private var rightX: Float = 0f
-    private var rightY: Float = 0f
-
-    private var lTrigger: Float = 0f
-    private var rTrigger: Float = 0f
-
-    private var dPadX: Float = 0f
-    private var dPadY: Float = 0f
-
-
-    fun processJoystickInput(event: MotionEvent, historyPos: Int) {
+    fun processJoystickInput(event: MotionEvent) {
 
         with(event) {
-            leftX = getCenteredAxis(this, MotionEvent.AXIS_X, historyPos)
-            leftY = getCenteredAxis(this, MotionEvent.AXIS_Y, historyPos)
-            rightX = getCenteredAxis(this, MotionEvent.AXIS_Z, historyPos)
-            rightY = getCenteredAxis(this, MotionEvent.AXIS_RZ, historyPos)
+            leftX = getCenteredAxis(this, MotionEvent.AXIS_X)
+            leftY = getCenteredAxis(this, MotionEvent.AXIS_Y)
+            rightX = getCenteredAxis(this, MotionEvent.AXIS_Z)
+            rightY = getCenteredAxis(this, MotionEvent.AXIS_RZ)
 
-            lTrigger = event.getAxisValue(MotionEvent.AXIS_BRAKE)
-            rTrigger = event.getAxisValue(MotionEvent.AXIS_GAS)
+            lTrigger = getAxisValue(MotionEvent.AXIS_BRAKE)
+            rTrigger = getAxisValue(MotionEvent.AXIS_GAS)
 
-
-            val logString = StringBuilder()
-                .append("leftX ", String.format("%4.2f", leftX))
-                .append(" leftY ", String.format("%4.2f", leftY))
-                .append(" rightX ", String.format("%4.2f", rightX))
-                .append(" rightY ", String.format("%4.2f", rightY))
-                .append(" LTrig ", String.format("%4.2f", lTrigger))
-                .append(" RTrig ", String.format("%4.2f", rTrigger))
-                .append(" position ", String.format("%d", historyPos))
-                .toString()
-
-            Log.i("GAMEPAD:", logString)
-
-            val dpad = source and InputDevice.SOURCE_DPAD
             dPadX = getAxisValue(MotionEvent.AXIS_HAT_X)
             dPadY = getAxisValue(MotionEvent.AXIS_HAT_Y)
-            Log.i("DPAD:", "$dpad $dPadX $dPadY")
-
 
         }
 
@@ -105,7 +83,6 @@ class GamepadJoysticks() {
                 false // haven't seen a "Center" implementation yet
             )
         }
-
     }
 
     fun initOnClickInterface(listener: UpdateJoystickData) {
@@ -114,29 +91,25 @@ class GamepadJoysticks() {
 
     private fun getCenteredAxis(
         event: MotionEvent,
-        axis: Int,
-        historyPos: Int
+        axis: Int
     ): Float {
 
         val device = event.device
-        val range: InputDevice.MotionRange? = device.getMotionRange(axis, event.source)
+        val range = device.getMotionRange(axis, event.source)
 
         // A joystick at rest does not always report an absolute position of
         // (0,0). Use the getFlat() method to determine the range of values
         // bounding the joystick axis center.
-        range?.apply {
-            val value: Float = if (historyPos < 0) {
-                event.getAxisValue(axis)
-            } else {
-                event.getHistoricalAxisValue(axis, historyPos)
-            }
 
-            // Ignore axis values that are within the 'flat' region of the
-            // joystick axis center.
-            if (abs(value) > flat) {
-                return value
-            }
+        val axisValue = event.getAxisValue(axis)
+
+        // Ignore axis values that are within the 'flat' region of the
+        // joystick axis center.
+
+        if (abs(axisValue) > range.flat) {
+            return axisValue
         }
+   
         return 0f
     }
 
