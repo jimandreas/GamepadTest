@@ -46,39 +46,14 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         navView = findViewById(R.id.nav_view)
 
 
-        /**
-         * EXPERIMENTAL
-         */
 
-
-        val inputManager = applicationContext.getSystemService(
-            Context.INPUT_SERVICE
-        ) as InputManager
-        val idArray = inputManager.inputDeviceIds
-        val deviceArray = mutableListOf<InputDevice>()
-        for (i in idArray) {
-            if (i > 0) {
-                val dev = inputManager.getInputDevice(i)
-                val descriptor = dev.descriptor
-                Log.i("INPUT", descriptor)
-                val keymap = dev.keyCharacterMap
-                val keytype = dev.keyboardType
-                val number = dev.controllerNumber
-                deviceArray.add(dev)
-            }
-
-        }
-
-        /**
-         * END
-         */
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_search, R.id.navigation_gamepad, R.id.navigation_settings
+                R.id.navigation_scan, R.id.navigation_gamepad, R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -88,7 +63,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
             when (destination.id) {
-                R.id.navigation_search -> {
+                R.id.navigation_scan -> {
                     toolBar.setDisplayShowTitleEnabled(false)
 
                 }
