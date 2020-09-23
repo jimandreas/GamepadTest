@@ -12,5 +12,8 @@
     <dimen name="higher_padding">16dp</dimen>
 
 
+    <dimen name="card_margin">16dp</dimen>
+
+
 
 </resources>

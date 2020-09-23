@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jimandreas.gamepadtest">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
         android:name=".MainApplication"
         android:label="@string/app_name"

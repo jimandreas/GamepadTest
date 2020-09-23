@@ -7,4 +7,8 @@
 
 
     <color name="blackWithTransparency">#1F000000</color>
+
+    <color name="window_background">#FFC0C0C0</color>
+    <color name="list_background_grey">#C0C0C0</color>
+    <color name="theme_accent">#FF4081</color>
 </resources>

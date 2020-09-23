@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.search.SearchFragment">
 
-    <TextView
-        android:id="@+id/text_search"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jimandreas.gamepadtest.ui.search.SearchViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/card_margin"
+            android:paddingTop="@dimen/card_margin"
+            android:paddingRight="@dimen/card_margin"
+            android:paddingBottom="@dimen/card_margin">
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/cardview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+
+                style="@style/MyCardViewStyle"
+
+                tools:context=".ui.search.SearchFragment">
+
+                <TextView
+                    android:id="@+id/some_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="190dp"
+                    android:layout_margin="@dimen/default_padding"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/temp_contents"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</layout>
