@@ -4,8 +4,6 @@ package com.jimandreas.gamepadtest.ui.scan
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Vibrator
-import android.view.InputDevice
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.databinding.FragmentScanBinding
 import com.jimandreas.gamepadtest.gamepad.GamepadServices
+import com.jimandreas.gamepadtest.gamepad.SourceDataToString
 
 class ScanFragment : Fragment() {
 
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var binding: FragmentScanBinding
     private lateinit var bcontext: Context
+    private val sourceToString = SourceDataToString()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,12 +51,15 @@ class ScanFragment : Fragment() {
          */
         val scanner = GamepadServices.bluetoothData
         val deviceArray = scanner.scanList(binding.root.context)
+
         if (deviceArray != null) {
             if (deviceArray.size > 0) {
                 with(deviceArray[0]) {
                     val str = StringBuilder("Controller: $controllerNum\n")
-                    str.append("name: $descString\n")
-                    binding.deviceInfoText.text = str
+                    str.append("name: $productName\n")
+                    str.append("source bits (hex) decoded: ${sources.toString(16)}\n")
+                    str.append(sourceToString.getSourceFeatures(sources))
+                    binding.deviceInfoText.text = str.toString()
 
                 }
             } else {
