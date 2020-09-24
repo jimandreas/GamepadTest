@@ -7,4 +7,7 @@ import androidx.lifecycle.ViewModel
 class ScanViewModel : ViewModel() {
 
 
+    fun onClick() {
+
+    }
 }

@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingComponent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.databinding.FragmentScanBinding
 import com.jimandreas.gamepadtest.gamepad.GamepadServices
@@ -22,11 +25,16 @@ class ScanFragment : Fragment() {
     private lateinit var bcontext: Context
     private val sourceToString = SourceDataToString()
 
+    private lateinit var theRecyclerView : RecyclerView
+    private lateinit var deviceAdapter : DeviceAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         binding = FragmentScanBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
@@ -35,6 +43,7 @@ class ScanFragment : Fragment() {
         binding.viewModel = scanViewModel
         bcontext = binding.root.context
 
+// works but not the right context
 //        attachClickToCopyText(binding.someTextView,
 //            binding.someTextView.text.toString(), binding.root.context)
 
@@ -67,7 +76,28 @@ class ScanFragment : Fragment() {
             }
         }
 
+        theRecyclerView = binding.recyclerListThing
+        val layoutManager = LinearLayoutManager(binding.root.context)
+        theRecyclerView.layoutManager = layoutManager
+        theRecyclerView.setHasFixedSize(false)
+
+        deviceAdapter = DeviceAdapter(binding.root.context, object : DeviceAdapter.DeviceAdapterOnClickHandler {
+            override fun onClick() {
+                Toast.makeText(
+                    activity,
+                    "Recycler view - CardView click",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+        theRecyclerView.adapter = deviceAdapter
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
     }
 
 }
