@@ -24,31 +24,6 @@
             android:paddingRight="@dimen/card_margin"
             android:paddingBottom="@dimen/card_margin">
 
-            <androidx.cardview.widget.CardView
-
-                android:id="@+id/cardview"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/card_margin"
-                android:layout_marginRight="@dimen/card_margin"
-
-                style="@style/MyCardViewStyle"
-
-                tools:context=".ui.scan.ScanFragment">
-
-                <TextView
-                    android:id="@+id/device_info_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_padding"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/temp_contents"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="16sp" />
-
-            </androidx.cardview.widget.CardView>
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_list_thing"
                 android:layout_width="match_parent"

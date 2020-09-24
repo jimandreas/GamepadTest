@@ -43,38 +43,6 @@ class ScanFragment : Fragment() {
         binding.viewModel = scanViewModel
         bcontext = binding.root.context
 
-// works but not the right context
-//        attachClickToCopyText(binding.someTextView,
-//            binding.someTextView.text.toString(), binding.root.context)
-
-        binding.cardview.setOnClickListener {
-            Toast.makeText(
-                activity,
-                "CardView click",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        /*
-         * pull a copy of the existing bluetooth conns
-         */
-        val scanner = GamepadServices.bluetoothData
-        val deviceArray = scanner.scanList(binding.root.context)
-
-        if (deviceArray != null) {
-            if (deviceArray.size > 0) {
-                with(deviceArray[0]) {
-                    val str = StringBuilder("Controller: $controllerNum\n")
-                    str.append("name: $productName\n")
-                    str.append("source bits (hex) decoded: ${sources.toString(16)}\n")
-                    str.append(sourceToString.getSourceFeatures(sources))
-                    binding.deviceInfoText.text = str.toString()
-
-                }
-            } else {
-                binding.deviceInfoText.text = getString(R.string.no_controllers)
-            }
-        }
 
         theRecyclerView = binding.recyclerListThing
         val layoutManager = LinearLayoutManager(binding.root.context)
@@ -100,7 +68,6 @@ class ScanFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
 
         val scanner = GamepadServices.bluetoothData
         val deviceArray = scanner.assembleDescriptionStrings(binding.root.context)
