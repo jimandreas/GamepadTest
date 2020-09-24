@@ -7,7 +7,19 @@ import androidx.lifecycle.ViewModel
 class ScanViewModel : ViewModel() {
 
 
+    private val _devInfoStringArray = MutableLiveData<List<String>>().apply {
+        value = listOf("")
+
+    }
+    val devInfoStringArray: LiveData<List<String>> = _devInfoStringArray
+
+    fun updateDevStringArray(devInfo: List<String>) {
+        _devInfoStringArray.value = devInfo
+    }
+
     fun onClick() {
 
     }
 }
+
+

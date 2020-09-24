@@ -81,7 +81,11 @@ class ScanFragment : Fragment() {
         theRecyclerView.layoutManager = layoutManager
         theRecyclerView.setHasFixedSize(false)
 
-        deviceAdapter = DeviceAdapter(binding.root.context, object : DeviceAdapter.DeviceAdapterOnClickHandler {
+        deviceAdapter = DeviceAdapter(
+            binding.root.context,
+            scanViewModel,
+            this,
+            object : DeviceAdapter.DeviceAdapterOnClickHandler {
             override fun onClick() {
                 Toast.makeText(
                     activity,
@@ -97,6 +101,12 @@ class ScanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+        val scanner = GamepadServices.bluetoothData
+        val deviceArray = scanner.assembleDescriptionStrings(binding.root.context)
+        val sizeOf = deviceArray.size
+
+        scanViewModel.updateDevStringArray(deviceArray)
 
     }
 

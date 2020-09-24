@@ -116,61 +116,13 @@ class GamepadViewModel : ViewModel(), UpdateJoystickData, GamepadButton.GamepadK
     override fun onKeyDown(keycode: Int, keyEvent: KeyEvent?) {
         _buttonDown.value = Pair(keycode, true)
 
-//        when (keycode) {
-//            KeyEvent.KEYCODE_DPAD_LEFT -> Log.i("VMdown", "LEFT")
-//            KeyEvent.KEYCODE_DPAD_RIGHT -> Log.i("VMdown", "RIGHT")
-//            KeyEvent.KEYCODE_DPAD_UP -> Log.i("VMdown", "UP")
-//            KeyEvent.KEYCODE_DPAD_DOWN -> Log.i("VMdown", "DOWN")
-//            KeyEvent.KEYCODE_DPAD_CENTER -> Log.i("VMdown", "CENTER")
-//
-//            KeyEvent.KEYCODE_BUTTON_R1 -> Log.i("VMdown", "R1")
-//            KeyEvent.KEYCODE_BUTTON_L1 -> Log.i("VMdown", "L1")
-//
-//
-//            KeyEvent.KEYCODE_BUTTON_A -> Log.i("VMdown", "A")
-//            KeyEvent.KEYCODE_BUTTON_B -> Log.i("VMdown", "B")
-//            KeyEvent.KEYCODE_BUTTON_C -> Log.i("VMdown", "C")
-//
-//
-//            KeyEvent.KEYCODE_BUTTON_X -> Log.i("VMdown", "X")
-//            KeyEvent.KEYCODE_BUTTON_Y -> Log.i("VMdown", "Y")
-//            KeyEvent.KEYCODE_BUTTON_Z -> Log.i("VMdown", "Z")
-//
-//
-//            KeyEvent.KEYCODE_BUTTON_THUMBL -> Log.i("VMdown", "THUMB L")
-//            KeyEvent.KEYCODE_BUTTON_THUMBR -> Log.i("VMdown", "THUMB R")
-//
-//
-//            else -> Log.i("VMdown", "Other $keycode")
-//        }
+
 
     }
 
     override fun onKeyUp(keycode: Int, keyEvent: KeyEvent?) {
         _buttonDown.value = Pair(keycode, false)
 
-//        when (keycode) {
-//            KeyEvent.KEYCODE_DPAD_LEFT -> Log.i("VMup", "LEFT")
-//            KeyEvent.KEYCODE_DPAD_RIGHT -> Log.i("VMup", "RIGHT")
-//            KeyEvent.KEYCODE_DPAD_UP -> Log.i("VMup", "UP")
-//            KeyEvent.KEYCODE_DPAD_DOWN -> Log.i("VMup", "DOWN")
-//            KeyEvent.KEYCODE_DPAD_CENTER -> Log.i("VMup", "CENTER")
-//
-//            KeyEvent.KEYCODE_BUTTON_R1 -> Log.i("VMup", "R1")
-//            KeyEvent.KEYCODE_BUTTON_L1 -> Log.i("VMup", "L1")
-//
-//
-//            KeyEvent.KEYCODE_BUTTON_A -> Log.i("VMup", "A")
-//            KeyEvent.KEYCODE_BUTTON_B -> Log.i("VMup", "B")
-//            KeyEvent.KEYCODE_BUTTON_C -> Log.i("VMup", "C")
-//
-//
-//            KeyEvent.KEYCODE_BUTTON_X -> Log.i("VMup", "X")
-//            KeyEvent.KEYCODE_BUTTON_Y -> Log.i("VMup", "Y")
-//            KeyEvent.KEYCODE_BUTTON_Z -> Log.i("VMup", "Z")
-//
-//            else -> Log.i("VMup", "Other $keycode")
-//        }
 
     }
 

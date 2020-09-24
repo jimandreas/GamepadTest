@@ -3,10 +3,15 @@
 package com.jimandreas.gamepadtest.gamepad
 
 
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothProfile.GATT
+import android.content.Context
+import android.content.Context.BLUETOOTH_SERVICE
 import android.os.Vibrator
 import android.util.Log
 import android.view.InputDevice
 import android.view.MotionEvent
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import kotlin.math.abs
@@ -36,6 +41,8 @@ class GamepadJoysticks() {
 
     init {
         getDeviceInfo()
+
+
     }
 
     private fun getDeviceInfo() {
@@ -48,11 +55,11 @@ class GamepadJoysticks() {
             str.append("dev $id")
             str.append("name: " + dev.name)
             vib = dev.vibrator
-            str.append("has vib: " + vib.hasVibrator())
+            str.append(" has vib: " + vib.hasVibrator())
             str.append("\n")
 
         }
-        Log.i("GAMEPAD DEVS:",  "$str")
+        Log.i("GAMEPAD DEVS:", "$str")
     }
 
     fun processJoystickInput(event: MotionEvent) {
