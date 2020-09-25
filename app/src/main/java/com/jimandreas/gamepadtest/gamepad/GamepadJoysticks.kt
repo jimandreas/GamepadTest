@@ -2,20 +2,13 @@
 
 package com.jimandreas.gamepadtest.gamepad
 
-
-import android.bluetooth.BluetoothManager
-import android.bluetooth.BluetoothProfile.GATT
-import android.content.Context
-import android.content.Context.BLUETOOTH_SERVICE
 import android.os.Vibrator
 import android.util.Log
 import android.view.InputDevice
 import android.view.MotionEvent
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import kotlin.math.abs
-
 
 interface UpdateJoystickData {
     fun updateJoysticks(lx: Float, ly: Float, rx: Float, ry: Float)
@@ -23,8 +16,8 @@ interface UpdateJoystickData {
     fun updateTriggers(left: Float, right: Float)
 }
 
-class GamepadJoysticks() {
-    var listener: UpdateJoystickData? = null
+class GamepadJoysticks {
+    private var listener: UpdateJoystickData? = null
 
     private var leftX: Float = 0f
     private var leftY: Float = 0f
@@ -41,8 +34,6 @@ class GamepadJoysticks() {
 
     init {
         getDeviceInfo()
-
-
     }
 
     private fun getDeviceInfo() {

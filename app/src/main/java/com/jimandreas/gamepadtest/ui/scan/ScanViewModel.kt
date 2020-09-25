@@ -17,6 +17,7 @@ class ScanViewModel : ViewModel() {
         _devInfoStringArray.value = devInfo
     }
 
+    // TODO: copy the contents to the clipboard on a long click
     fun onClick() {
 
     }

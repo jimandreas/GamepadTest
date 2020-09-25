@@ -8,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingComponent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.databinding.FragmentScanBinding
+import com.jimandreas.gamepadtest.gamepad.BluetoothData
 import com.jimandreas.gamepadtest.gamepad.GamepadServices
 import com.jimandreas.gamepadtest.gamepad.SourceDataToString
 
@@ -69,12 +68,10 @@ class ScanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val scanner = GamepadServices.bluetoothData
-        val deviceArray = scanner.assembleDescriptionStrings(binding.root.context)
+        val scanner = BluetoothData(binding.root.context)
+        val deviceArray = scanner.assembleDescriptionStrings()
         val sizeOf = deviceArray.size
 
         scanViewModel.updateDevStringArray(deviceArray)
-
     }
-
 }

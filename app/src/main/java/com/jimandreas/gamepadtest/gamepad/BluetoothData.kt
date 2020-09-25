@@ -2,16 +2,14 @@
 
 package com.jimandreas.gamepadtest.gamepad
 
-import android.bluetooth.BluetoothManager
-import android.bluetooth.BluetoothProfile
 import android.content.Context
-import android.content.Context.BLUETOOTH_SERVICE
 import android.hardware.input.InputManager
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.InputDevice
 import android.view.KeyCharacterMap
-import androidx.core.content.ContextCompat
-import com.jimandreas.gamepadtest.R
+
 
 data class DeviceInfo(
     var productName: String? = null,
@@ -23,12 +21,19 @@ data class DeviceInfo(
     var inputDeviceDataCopy: InputDevice? = null
 )
 
-class BluetoothData {
+class BluetoothData(contextIn: Context)
+    : InputManager.InputDeviceListener {
+    private val contextLocal = contextIn
+    private lateinit var im: InputManager
+    init {
+        im = contextLocal.getSystemService(
+            Context.INPUT_SERVICE
+        ) as InputManager
+        im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
+    }
 
-
-
-    fun scanList(contextIn: Context): MutableList<DeviceInfo>? {
-        val inputManager = contextIn.getSystemService(
+    private fun scanList(): MutableList<DeviceInfo>? {
+        val inputManager = contextLocal.getSystemService(
             Context.INPUT_SERVICE
         ) as InputManager
 
@@ -57,17 +62,10 @@ class BluetoothData {
         return devArray
     }
 
-    fun assembleDescriptionStrings(contextIn: Context): List<String> {
-
-        val manager = contextIn.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager?
-        // profile GATT or GATT_SERVER supported GATT is Bluetooth Low Energy BLE
-        val connected = manager!!.getConnectedDevices(BluetoothProfile.GATT_SERVER)
-        Log.i("Connected Devices: ", connected.size.toString() + "")
-
-
+    fun assembleDescriptionStrings(): List<String> {
         val sourceToString = SourceDataToString()
         val descList = mutableListOf<String>()
-        val deviceArray = scanList(contextIn)
+        val deviceArray = scanList()
         if (deviceArray != null) {
             if (deviceArray.size > 0) {
                 for (entry in deviceArray) {
@@ -84,5 +82,17 @@ class BluetoothData {
         }
         val retVal = descList.map { it }
         return retVal
+    }
+
+    override fun onInputDeviceAdded(deviceId: Int) {
+        Log.i("BLUETOOTH:", "Device added $deviceId")
+    }
+
+    override fun onInputDeviceRemoved(deviceId: Int) {
+        Log.i("BLUETOOTH:", "Device removed $deviceId")
+    }
+
+    override fun onInputDeviceChanged(deviceId: Int) {
+        Log.i("BLUETOOTH:", "Device changed $deviceId")
     }
 }

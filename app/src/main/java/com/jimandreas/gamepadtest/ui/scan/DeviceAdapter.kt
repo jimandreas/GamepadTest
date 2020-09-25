@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.ui.scan.DeviceAdapter.DeviceViewHolder
