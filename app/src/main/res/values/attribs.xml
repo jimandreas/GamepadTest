@@ -2,6 +2,6 @@
 <!--Hack for "match_parent" dimension-->
 <!--https://stackoverflow.com/a/37971851-->
 <resources>
-    <item name="match_parent" type="dimen">-1</item>
-    <item name="wrap_content" type="dimen">-2</item>
+    <item name="custom_match_parent" type="dimen">-1</item>
+    <item name="custom_wrap_content" type="dimen">-2</item>
 </resources>

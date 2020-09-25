@@ -58,22 +58,13 @@
     <string name="temp_contents">cardview temp contents</string>
     <string name="no_controllers">No Controllers Found</string>
 
-    <!-- Settings Activity Title -->
+    <!-- Settings fragment -->
     <string name="title_activity_settings">GamepadTest Settings</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="pref_motion_events">Log motion events in Logcat</string>
+    <string name="pref_motion_events_summary">Turn on to see joystick and trigger data</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="pref_title_nightmode">Night mode</string>
+    <string name="pref_title_nightmode_summary">Turn on to reduce glare</string>
 
 </resources>

@@ -1,0 +1,28 @@
+<androidx.preference.PreferenceScreen
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--This is the real settings XML file.   The other files are lying around as -->
+    <!--examples from the template generator-->
+
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="nightmode"
+        android:title="@string/pref_title_nightmode"
+        android:summary="@string/pref_title_nightmode_summary"
+        android:defaultValue="false" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="log motion events"
+        android:title="@string/pref_motion_events"
+        android:summary="@string/pref_motion_events_summary"
+        android:defaultValue="false" />
+
+    <Preference
+        android:key="fmi_key"
+        android:title="For more information..." />
+
+</androidx.preference.PreferenceScreen>
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
