@@ -2,8 +2,6 @@
 
 package com.jimandreas.gamepadtest
 
-import android.content.Context
-import android.hardware.input.InputManager
 import android.os.Bundle
 import android.util.Log
 import android.view.InputDevice
@@ -20,22 +18,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jimandreas.gamepadtest.gamepad.GamepadServices
 
-enum class KbType(kbtype: Int) {
-    KEYBOARD_TYPE_NONE(0),
-    KEYBOARD_TYPE_NON_ALPHABETIC(1),
-    KEYBOARD_TYPE_ALPHABETIC(2)
-}
-
-/**
- * Stack overflow wisdom:
- *
-I haven't figured out a way yet, but I have found a horrible workaround.
-
-If you call KeyCharacterMap.deviceHasKey(keycode),
-I can ask Android if any input device on the system supports the specified keycode.
- * @link https://stackoverflow.com/a/11718512/3853712
- */
-
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     private lateinit var navView: BottomNavigationView
@@ -44,9 +26,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navView = findViewById(R.id.nav_view)
-
-
-
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -59,27 +38,22 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
             when (destination.id) {
-                R.id.navigation_scan -> {
-                    toolBar.setDisplayShowTitleEnabled(false)
 
-                }
                 R.id.navigation_gamepad -> {
-                    // do the set up of the game pad comm
-
-
+                    toolBar.setDisplayShowTitleEnabled(true)
+                    toolBar.title = getString(R.string.app_name)
+                }
+                R.id.navigation_scan -> {
+                    toolBar.setDisplayShowTitleEnabled(true)
                 }
                 else -> {
                     toolBar.setDisplayShowTitleEnabled(true)
-
                 }
             }
         }
-
-
     }
 
     /**

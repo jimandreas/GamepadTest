@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="recycler_scroll_width">500dp</dimen>
+    <dimen name="recycler_padding_start">@dimen/very_big_padding</dimen>
+
+</resources>

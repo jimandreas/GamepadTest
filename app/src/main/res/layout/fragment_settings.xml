@@ -1,61 +1,9 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.jimandreas.gamepadtest.ui.settings.SettingsViewModel" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
+        android:id="@+id/settings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.settings.SettingsFragment">
-
-
-        <ImageView
-            android:id="@+id/gamepadImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/settings_window"
-            android:src="@drawable/ic_gamepad"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-        <LinearLayout
-            android:id="@+id/settings_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gamepadImage">
-
-            <TextView
-                android:id="@+id/settings_about_link"
-                style="@style/HidrohTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:text="@string/about_this_app"
-                android:textSize="30sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/separator"
-                android:background="@color/blackWithTransparency" />
-
-
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        android:layout_height="match_parent" />
+</LinearLayout>

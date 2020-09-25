@@ -1,7 +1,10 @@
-@file:Suppress("UnnecessaryVariable")
+@file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate")
 
 package com.jimandreas.gamepadtest.gamepad
 
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.hardware.input.InputManager
 import android.os.Handler
@@ -9,7 +12,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.InputDevice
 import android.view.KeyCharacterMap
-
 
 data class DeviceInfo(
     var productName: String? = null,
@@ -21,18 +23,30 @@ data class DeviceInfo(
     var inputDeviceDataCopy: InputDevice? = null
 )
 
-class BluetoothData(contextIn: Context)
-    : InputManager.InputDeviceListener {
+class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
     private val contextLocal = contextIn
-    private lateinit var im: InputManager
+    private var im: InputManager
+    private var bluetoothAdapter: BluetoothAdapter? = null
+
     init {
         im = contextLocal.getSystemService(
             Context.INPUT_SERVICE
         ) as InputManager
         im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
     }
 
-    private fun scanList(): MutableList<DeviceInfo>? {
+    fun isBluetoothEnabled(): Boolean {
+        if (bluetoothAdapter != null) {
+            val state = bluetoothAdapter!!.isEnabled
+            return state
+        } else {
+            return false
+        }
+    }
+
+    fun scanList(): MutableList<DeviceInfo> {
         val inputManager = contextLocal.getSystemService(
             Context.INPUT_SERVICE
         ) as InputManager
@@ -66,17 +80,16 @@ class BluetoothData(contextIn: Context)
         val sourceToString = SourceDataToString()
         val descList = mutableListOf<String>()
         val deviceArray = scanList()
-        if (deviceArray != null) {
-            if (deviceArray.size > 0) {
-                for (entry in deviceArray) {
-                    with(entry) {
-                        val str = StringBuilder("Controller: $controllerNum\n")
-                        str.append("name: $productName\n")
-                        str.append("source bits (hex) decoded: ${sources.toString(16)}\n")
-                        str.append(sourceToString.getSourceFeatures(sources))
-                        descList.add(str.toString())
+        descList.add("Input Controllers connected: ${deviceArray.size}")
+        if (deviceArray.size > 0) {
+            for (entry in deviceArray) {
+                with(entry) {
+                    val str = StringBuilder("Controller: $controllerNum\n")
+                    str.append("name: $productName\n")
+                    str.append("source bits (hex) decoded: ${sources.toString(16)}\n")
+                    str.append(sourceToString.getSourceFeatures(sources))
+                    descList.add(str.toString())
 
-                    }
                 }
             }
         }

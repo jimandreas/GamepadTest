@@ -2,11 +2,14 @@
 
 package com.jimandreas.gamepadtest.ui.gamepad
 
+import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.hardware.input.InputManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -14,13 +17,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jimandreas.gamepadtest.R
 import com.jimandreas.gamepadtest.databinding.FragmentGamepadBinding
+import com.jimandreas.gamepadtest.gamepad.BluetoothData
 
 
-class GamepadFragment : Fragment(), Observer<Int> {
+class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observer<Int> */ {
 
     private lateinit var gamepadViewModel: GamepadViewModel
     private lateinit var binding: FragmentGamepadBinding
@@ -37,31 +40,27 @@ class GamepadFragment : Fragment(), Observer<Int> {
     private var blueBackButtonDrawable: Drawable? = null
     private var redBackButtonDrawable: Drawable? = null
 
-    private lateinit var bcontext: Context
+    private lateinit var contextLocal: Context
+    private lateinit var bluetoothData : BluetoothData
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentGamepadBinding.inflate(inflater)
         binding.lifecycleOwner = this
-
-        /**
-         *  EXPERIMENTAL
-         */
-        val inputManager = binding.root.context.getSystemService(
-            Context.INPUT_SERVICE
-        ) as InputManager
-        /**
-         * END
-         */
+        contextLocal = binding.root.context
+        bluetoothData = BluetoothData(contextLocal)
 
         gamepadViewModel =
             ViewModelProvider(this).get(GamepadViewModel::class.java)
         binding.viewModel = gamepadViewModel
-        bcontext = binding.root.context
+
+        val im = contextLocal.getSystemService(
+            Context.INPUT_SERVICE
+        ) as InputManager
+        im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
 
         gamepadViewModel.joyLeft.observe(viewLifecycleOwner, {
             val joy = it
@@ -91,26 +90,46 @@ class GamepadFragment : Fragment(), Observer<Int> {
 
         // kudos to Dhaval Patel: https://stackoverflow.com/a/52619840/3853712
         redButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_red)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.button_bg_round_red)
         blueButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_blue)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.button_bg_round_blue)
 
         redOvalButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_oval_red)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.button_bg_oval_red)
         blueOvalButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.button_bg_round_blue)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.button_bg_round_blue)
 
         blueStartButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.ic_table_rows_black_24dp)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.ic_table_rows_black_24dp)
         redStartButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.ic_table_rows_red)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.ic_table_rows_red)
 
         blueBackButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.ic_gamepad_squares)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.ic_gamepad_squares)
         redBackButtonDrawable =
-            AppCompatResources.getDrawable(bcontext, R.drawable.ic_gamepad_squares_red)
+            AppCompatResources.getDrawable(contextLocal, R.drawable.ic_gamepad_squares_red)
+
+        updateConnectionStatus()
 
         return binding.root
+    }
+
+    private fun updateConnectionStatus() {
+        /**
+         * Now look and see if any input devices are present
+         */
+
+        val devList = bluetoothData.scanList()
+        val enabled = bluetoothData.isBluetoothEnabled()
+        var statusString = when (devList.size) {
+            0 -> "No controllers found"
+            1 -> "1 controller found"
+            else -> "${devList.size} controllers found"
+        }
+        if (!enabled) {
+            statusString += "\nBluetooth is not turned on"
+        }
+        binding.inputDeviceStatus.text = statusString
     }
 
 
@@ -197,10 +216,23 @@ class GamepadFragment : Fragment(), Observer<Int> {
         }
     }
 
+    override fun onInputDeviceAdded(deviceId: Int) {
+        updateConnectionStatus()
+    }
+
+    override fun onInputDeviceRemoved(deviceId: Int) {
+        updateConnectionStatus()
+    }
+
+    override fun onInputDeviceChanged(deviceId: Int) {
+        updateConnectionStatus()
+    }
+
     /**
      * OnChanged is needed for the Observer interface
      */
-    override fun onChanged(t: Int?) {
+
+/*    override fun onChanged(t: Int?) {
         TODO("Not yet implemented")
-    }
+    }*/
 }

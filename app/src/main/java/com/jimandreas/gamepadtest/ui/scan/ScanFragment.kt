@@ -3,7 +3,10 @@
 package com.jimandreas.gamepadtest.ui.scan
 
 import android.content.Context
+import android.hardware.input.InputManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +20,7 @@ import com.jimandreas.gamepadtest.gamepad.BluetoothData
 import com.jimandreas.gamepadtest.gamepad.GamepadServices
 import com.jimandreas.gamepadtest.gamepad.SourceDataToString
 
-class ScanFragment : Fragment() {
+class ScanFragment : Fragment(),  InputManager.InputDeviceListener {
 
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var binding: FragmentScanBinding
@@ -26,6 +29,7 @@ class ScanFragment : Fragment() {
 
     private lateinit var theRecyclerView : RecyclerView
     private lateinit var deviceAdapter : DeviceAdapter
+    private lateinit var contextLocal: Context
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,15 +37,19 @@ class ScanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
         binding = FragmentScanBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        contextLocal = binding.root.context
 
         scanViewModel =
             ViewModelProvider(this).get(ScanViewModel::class.java)
         binding.viewModel = scanViewModel
         bcontext = binding.root.context
 
+        val im = contextLocal.getSystemService(
+            Context.INPUT_SERVICE
+        ) as InputManager
+        im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
 
         theRecyclerView = binding.recyclerListThing
         val layoutManager = LinearLayoutManager(binding.root.context)
@@ -67,11 +75,25 @@ class ScanFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        updateDeviceStringArray()
+    }
 
+    private fun updateDeviceStringArray() {
         val scanner = BluetoothData(binding.root.context)
         val deviceArray = scanner.assembleDescriptionStrings()
-        val sizeOf = deviceArray.size
-
         scanViewModel.updateDevStringArray(deviceArray)
+        deviceAdapter.notifyDataSetChanged()
+    }
+
+    override fun onInputDeviceAdded(deviceId: Int) {
+        updateDeviceStringArray()
+    }
+
+    override fun onInputDeviceRemoved(deviceId: Int) {
+        updateDeviceStringArray()
+    }
+
+    override fun onInputDeviceChanged(deviceId: Int) {
+        updateDeviceStringArray()
     }
 }

@@ -10,10 +10,12 @@
     <dimen name="separator">1dp</dimen>
     <dimen name="default_padding">8dp</dimen>
     <dimen name="higher_padding">16dp</dimen>
+    <dimen name="very_big_padding">80dp</dimen>
 
 
     <dimen name="card_margin">16dp</dimen>
 
-
+    <dimen name="recycler_scroll_width">@dimen/match_parent</dimen>
+    <dimen name="recycler_padding_start">@dimen/default_padding</dimen>
 
 </resources>
