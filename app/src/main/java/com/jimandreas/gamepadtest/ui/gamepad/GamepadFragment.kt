@@ -2,7 +2,6 @@
 
 package com.jimandreas.gamepadtest.ui.gamepad
 
-import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -114,23 +113,7 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
         return binding.root
     }
 
-    private fun updateConnectionStatus() {
-        /**
-         * Now look and see if any input devices are present
-         */
 
-        val devList = bluetoothData.scanList()
-        val enabled = bluetoothData.isBluetoothEnabled()
-        var statusString = when (devList.size) {
-            0 -> "No controllers found"
-            1 -> "1 controller found"
-            else -> "${devList.size} controllers found"
-        }
-        if (!enabled) {
-            statusString += "\nBluetooth is not turned on"
-        }
-        binding.inputDeviceStatus.text = statusString
-    }
 
 
     private fun handleButtonChange(keypair: Pair<Int, Boolean>) {
@@ -226,6 +209,24 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
 
     override fun onInputDeviceChanged(deviceId: Int) {
         updateConnectionStatus()
+    }
+
+    private fun updateConnectionStatus() {
+        /**
+         * Now look and see if any input devices are present
+         */
+
+        val devList = bluetoothData.scanList()
+        val enabled = bluetoothData.isBluetoothEnabled()
+        var statusString = when (devList.size) {
+            0 -> "No controllers found"
+            1 -> "1 controller found"
+            else -> "${devList.size} controllers found"
+        }
+        if (!enabled) {
+            statusString += "\nBluetooth is not turned on"
+        }
+        binding.inputDeviceStatus.text = statusString
     }
 
     /**
