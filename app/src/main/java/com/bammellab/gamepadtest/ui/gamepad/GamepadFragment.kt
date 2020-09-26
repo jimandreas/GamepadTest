@@ -166,6 +166,8 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
 
             KeyEvent.KEYCODE_BUTTON_START -> binding.startButton.setImageDrawable(drawableStartButton)
             KeyEvent.KEYCODE_BACK -> binding.backButton.setImageDrawable(drawableBackButton)
+            // moved to "SELECT" with Android 11??
+            KeyEvent.KEYCODE_BUTTON_SELECT -> binding.backButton.setImageDrawable(drawableBackButton)
 
             KeyEvent.KEYCODE_BUTTON_A -> binding.aButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_B -> binding.bButton.background = drawableToSet
