@@ -41,11 +41,11 @@
 
     <string name="about_open_source">Source code:</string>
     <string name="about_open_source_description">This app has source code available on Github. See the following URL:</string>
-    <string name="about_open_source_url">https://github.com/jimandreas/GamepadTest</string>
+    <string name="about_open_source_url">https://github.com/bammellab/GamepadTest</string>
 
     <string name="about_author">Developed by:</string>
     <string name="about_author_name">Jim Andreas</string>
-    <string name="about_author_contact">www.jimandreas.com</string>
+    <string name="about_author_contact">bammellab.com</string>
 
 
     <!--  Settings  -->

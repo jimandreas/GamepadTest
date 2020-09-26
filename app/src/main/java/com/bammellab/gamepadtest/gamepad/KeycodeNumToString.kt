@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate")
 
-package com.jimandreas.gamepadtest.gamepad
+package com.bammellab.gamepadtest.gamepad
 
 class KeycodeNumToString {
     val keyEventMap = HashMap<Int, String>()

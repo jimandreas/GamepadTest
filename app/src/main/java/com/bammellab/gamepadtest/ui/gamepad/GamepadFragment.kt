@@ -1,6 +1,6 @@
 @file:Suppress("MoveVariableDeclarationIntoWhen", "UNUSED_VARIABLE")
 
-package com.jimandreas.gamepadtest.ui.gamepad
+package com.bammellab.gamepadtest.ui.gamepad
 
 import android.content.Context
 import android.graphics.Color
@@ -17,9 +17,9 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.jimandreas.gamepadtest.R
-import com.jimandreas.gamepadtest.databinding.FragmentGamepadBinding
-import com.jimandreas.gamepadtest.gamepad.BluetoothData
+import com.bammellab.gamepadtest.R
+import com.bammellab.gamepadtest.databinding.FragmentGamepadBinding
+import com.bammellab.gamepadtest.gamepad.BluetoothData
 
 
 class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observer<Int> */ {

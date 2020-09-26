@@ -2,11 +2,11 @@
 site_name: 'Gamepad Test'
 site_description: 'An Android App to do Gamepad Testing'
 site_author: 'Jim Andreas'
-site_url: 'https://jimandreas.github.io/GamepadTest'
+site_url: 'https://bammellab.github.io/GamepadTest'
 
 # Repository
-repo_name: 'jimandreas/GamepadTest'
-repo_url: 'https://github.com/jimandreas/GamepadTest'
+repo_name: 'bammellab/GamepadTest'
+repo_url: 'https://github.com/bammellab/GamepadTest'
 
 # Copyright
 copyright: 'Copyright &copy; 2020 Jim Andreas'

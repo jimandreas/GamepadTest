@@ -1,4 +1,4 @@
-package com.jimandreas.gamepadtest.ui.settings
+package com.bammellab.gamepadtest.ui.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

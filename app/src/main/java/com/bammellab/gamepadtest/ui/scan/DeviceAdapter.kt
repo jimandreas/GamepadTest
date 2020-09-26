@@ -1,6 +1,6 @@
 @file:Suppress("UnnecessaryVariable")
 
-package com.jimandreas.gamepadtest.ui.scan
+package com.bammellab.gamepadtest.ui.scan
 
 import android.content.Context
 import android.util.Log
@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.jimandreas.gamepadtest.R
-import com.jimandreas.gamepadtest.ui.scan.DeviceAdapter.DeviceViewHolder
+import com.bammellab.gamepadtest.R
+import com.bammellab.gamepadtest.ui.scan.DeviceAdapter.DeviceViewHolder
 
 
 class DeviceAdapter(

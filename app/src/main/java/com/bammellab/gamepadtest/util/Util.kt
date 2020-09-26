@@ -1,4 +1,4 @@
-package com.jimandreas.gamepadtest.util
+package com.bammellab.gamepadtest.util
 
 import android.content.ClipData
 import android.content.ClipboardManager

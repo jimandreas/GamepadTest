@@ -18,7 +18,7 @@
 #  to get the right line endings for unix.
 
 
-REPO="https://github.com/jimandreas/GamepadTest"
+REPO="https://github.com/bammellab/GamepadTest"
 DIR=build/temp-$$
 
 if [ ! -f build_and_upload_docs.sh ]; then

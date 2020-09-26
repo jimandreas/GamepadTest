@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.jimandreas.gamepadtest.ui.gamepad.GamepadViewModel" />
+            type="com.bammellab.gamepadtest.ui.gamepad.GamepadViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_gamepadgreyoutline" />
 
-        <com.jimandreas.gamepadtest.ui.customviews.JoystickView
+        <com.bammellab.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickLeft"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <com.jimandreas.gamepadtest.ui.customviews.JoystickView
+        <com.bammellab.gamepadtest.ui.customviews.JoystickView
             android:id="@+id/joystickRight"
             android:layout_width="75dp"
             android:layout_height="75dp"

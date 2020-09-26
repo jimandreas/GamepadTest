@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_gamepad"
-        android:name="com.jimandreas.gamepadtest.ui.gamepad.GamepadFragment"
+        android:name="com.bammellab.gamepadtest.ui.gamepad.GamepadFragment"
         android:label="@string/title_gamepad"
         tools:layout="@layout/fragment_gamepad" />
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.jimandreas.gamepadtest.ui.scan.ScanFragment"
+        android:name="com.bammellab.gamepadtest.ui.scan.ScanFragment"
         android:label="@string/title_scan"
         tools:layout="@layout/fragment_scan" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.jimandreas.gamepadtest.ui.settings.SettingsFragment"
+        android:name="com.bammellab.gamepadtest.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

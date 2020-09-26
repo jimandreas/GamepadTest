@@ -1,6 +1,6 @@
 @file:Suppress("UnnecessaryVariable")
 
-package com.jimandreas.gamepadtest.ui.scan
+package com.bammellab.gamepadtest.ui.scan
 
 import android.content.Context
 import android.hardware.input.InputManager
@@ -15,20 +15,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jimandreas.gamepadtest.databinding.FragmentScanBinding
-import com.jimandreas.gamepadtest.gamepad.BluetoothData
-import com.jimandreas.gamepadtest.gamepad.GamepadServices
-import com.jimandreas.gamepadtest.gamepad.SourceDataToString
+import com.bammellab.gamepadtest.databinding.FragmentScanBinding
+import com.bammellab.gamepadtest.gamepad.BluetoothData
+import com.bammellab.gamepadtest.gamepad.SourceDataToString
 
-class ScanFragment : Fragment(),  InputManager.InputDeviceListener {
+
+class ScanFragment : Fragment(), InputManager.InputDeviceListener {
 
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var binding: FragmentScanBinding
     private lateinit var bcontext: Context
     private val sourceToString = SourceDataToString()
 
-    private lateinit var theRecyclerView : RecyclerView
-    private lateinit var deviceAdapter : DeviceAdapter
+    private lateinit var theRecyclerView: RecyclerView
+    private lateinit var deviceAdapter: DeviceAdapter
     private lateinit var contextLocal: Context
 
     override fun onCreateView(
@@ -61,18 +61,23 @@ class ScanFragment : Fragment(),  InputManager.InputDeviceListener {
             scanViewModel,
             this,
             object : DeviceAdapter.DeviceAdapterOnClickHandler {
-            override fun onClick() {
-                Toast.makeText(
-                    activity,
-                    "Recycler view - CardView click",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onClick() {
+                    Toast.makeText(
+                        activity,
+                        "Recycler view - CardView click",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
         theRecyclerView.adapter = deviceAdapter
 
         return binding.root
     }
+
+    /**
+     *
+     * @link: https://developer.android.com/guide/topics/connectivity/bluetooth?hl=en
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         updateDeviceStringArray()

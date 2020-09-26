@@ -3,7 +3,7 @@
 This Android App listens for connected GameControllers and displays the joysticks,
 buttons, and Dpad visually.
 
-Open source, git repo link:  https://github.com/jimandreas/GamepadTest
+Open source, git repo link:  https://github.com/bammellab/GamepadTest
 
 The app was developed and tested so far with the TRUST GXT 590 Gamepad:
 

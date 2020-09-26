@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.jimandreas.gamepadtest.gamepad
+package com.bammellab.gamepadtest.gamepad
 
 import android.os.Vibrator
 import android.util.Log

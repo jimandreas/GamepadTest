@@ -1,15 +1,15 @@
 @file:Suppress("MoveVariableDeclarationIntoWhen")
 
-package com.jimandreas.gamepadtest.ui.gamepad
+package com.bammellab.gamepadtest.ui.gamepad
 
 import android.util.Log
 import android.view.KeyEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jimandreas.gamepadtest.gamepad.GamepadButton
-import com.jimandreas.gamepadtest.gamepad.GamepadServices
-import com.jimandreas.gamepadtest.gamepad.UpdateJoystickData
+import com.bammellab.gamepadtest.gamepad.GamepadButton
+import com.bammellab.gamepadtest.gamepad.GamepadServices
+import com.bammellab.gamepadtest.gamepad.UpdateJoystickData
 
 
 class GamepadViewModel : ViewModel(), UpdateJoystickData, GamepadButton.GamepadKeyCallback {

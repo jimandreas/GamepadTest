@@ -1,6 +1,4 @@
-package com.jimandreas.gamepadtest.gamepad
-
-import android.view.KeyEvent
+package com.bammellab.gamepadtest.gamepad
 
 class GamepadLogger {
 

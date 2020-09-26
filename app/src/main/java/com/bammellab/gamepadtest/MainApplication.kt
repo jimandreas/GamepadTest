@@ -1,4 +1,4 @@
-package com.jimandreas.gamepadtest
+package com.bammellab.gamepadtest
 
 import android.app.Application
 

@@ -1,4 +1,4 @@
-package com.jimandreas.gamepadtest.ui.scan
+package com.bammellab.gamepadtest.ui.scan
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

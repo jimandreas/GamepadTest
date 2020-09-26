@@ -1,4 +1,4 @@
-package com.jimandreas.gamepadtest.gamepad
+package com.bammellab.gamepadtest.gamepad
 
 import android.view.KeyEvent
 

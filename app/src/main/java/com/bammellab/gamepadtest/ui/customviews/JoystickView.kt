@@ -24,7 +24,7 @@
  */
 @file:Suppress("unused", "UNUSED_PARAMETER")
 
-package com.jimandreas.gamepadtest.ui.customviews
+package com.bammellab.gamepadtest.ui.customviews
 
 import android.content.Context
 import android.graphics.*

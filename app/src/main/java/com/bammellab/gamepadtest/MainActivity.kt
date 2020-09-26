@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_VARIABLE", "unused", "UNUSED_PARAMETER")
 
-package com.jimandreas.gamepadtest
+package com.bammellab.gamepadtest
 
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.jimandreas.gamepadtest.gamepad.GamepadServices
+import com.bammellab.gamepadtest.gamepad.GamepadServices
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 

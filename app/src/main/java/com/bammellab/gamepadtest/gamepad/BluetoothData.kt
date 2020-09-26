@@ -1,10 +1,8 @@
 @file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate")
 
-package com.jimandreas.gamepadtest.gamepad
+package com.bammellab.gamepadtest.gamepad
 
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothManager
+import android.bluetooth.*
 import android.content.Context
 import android.hardware.input.InputManager
 import android.os.Handler
@@ -28,12 +26,79 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
     private var im: InputManager
     private var bluetoothAdapter: BluetoothAdapter? = null
 
+    private var inputDeviceNames = mutableListOf("")
+
     init {
         im = contextLocal.getSystemService(
             Context.INPUT_SERVICE
         ) as InputManager
         im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
+
+        /*
+         * this section is a place holder for trying to obtain
+         * data on devices as the connect and disconnect.
+         * Right now it is not obvious how to match
+         * Bluetooth profiles with Input devices.
+         * Just how to join the two sets of data is not obvious to me.
+         */
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val manager = contextLocal.getSystemService(BluetoothManager::class.java)
+            manager.adapter.getProfileProxy(
+                contextLocal,
+                object : BluetoothProfile.ServiceListener {
+                    override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
+                        val devs = proxy.connectedDevices
+                        val numDevs = devs.size
+
+                    }
+
+                    override fun onServiceDisconnected(profile: Int) {
+                        val doSomethingHere = profile
+                    }
+                },
+                4 // @Hide: int HID_HOST = 4;  Input devices go in this Profile
+            )
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val manager = contextLocal.getSystemService(BluetoothManager::class.java)
+            manager.adapter.getProfileProxy(contextLocal, object : BluetoothProfile.ServiceListener {
+                override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
+                    val devs = proxy.connectedDevices
+                    val numDevs = devs.size
+                }
+
+                override fun onServiceDisconnected(profile: Int) {
+                    val doSomethingHere = profile
+                }
+            }, BluetoothProfile.HEADSET)
+        }
+
+        var bluetoothHeadset: BluetoothHeadset? = null
+
+        // Get the default adapter
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
+        val profileListener = object : BluetoothProfile.ServiceListener {
+
+            override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
+                if (profile == BluetoothProfile.HEADSET) {
+                    bluetoothHeadset = proxy as BluetoothHeadset
+                }
+            }
+
+            override fun onServiceDisconnected(profile: Int) {
+                if (profile == BluetoothProfile.HEADSET) {
+                    bluetoothHeadset = null
+                }
+            }
+        }
+        /*
+         * end of placeholder dynamic listener handlers.  Not used currently.
+         */
+
 
     }
 
