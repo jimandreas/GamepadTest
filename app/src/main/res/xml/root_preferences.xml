@@ -1,0 +1,12 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings_window">
+
+        <SwitchPreferenceCompat
+            app:key="motion"
+            app:title="@string/settings_log_motion" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,16 +1,18 @@
 package com.bammellab.gamepadtest.gamepad
 
+import android.util.Log
+
 class GamepadLogger {
 
-    val numToString = GamepadServices.keycodes.keyEventMap
+    private val numToString = GamepadServices.keycodes.keyEventMap
 
     fun logKeyEventDown(keyCode: Int) {
         val keyStr = numToString[keyCode]
-        println("DOWN: $keyCode($keyStr)")
+        Log.v("KeyEvent","DOWN: $keyCode($keyStr)")
     }
 
     fun logKeyEventUp(keyCode: Int) {
         val keyStr = numToString[keyCode]
-        println("  UP: $keyCode($keyStr)")
+        Log.v("KeyEvent","  UP: $keyCode($keyStr)")
     }
 }

@@ -54,18 +54,8 @@ class GamepadViewModel : ViewModel(), UpdateJoystickData, GamepadButton.GamepadK
     }
 
     override fun updateJoysticks(lx: Float, ly: Float, rx: Float, ry: Float) {
-        val logString = StringBuilder()
-            .append("leftX ", String.format("%4.2f", lx))
-            .append(" leftY ", String.format("%4.2f", ly))
-            .append(" rightX ", String.format("%4.2f", rx))
-            .append(" rightY ", String.format("%4.2f", ry))
-            .toString()
-
-        Log.i("GAMEPAD VIEWMODEL:", logString)
-
         _joyLeft.value = Pair(lx, ly)
         _joyRight.value = Pair(rx, ry)
-
     }
 
     override fun updateTriggers(left: Float, right: Float) {
