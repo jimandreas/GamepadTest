@@ -63,13 +63,11 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
 
         gamepadViewModel.joyLeft.observe(viewLifecycleOwner, {
             val joy = it
-            Log.i("JOYSTICK FRAGMENT", joy.first.toString() + " " + joy.second.toString())
             binding.joystickLeft.updatePosition(joy.first, joy.second)
         })
 
         gamepadViewModel.joyRight.observe(viewLifecycleOwner, {
             val joy = it
-            Log.i("JOYSTICK FRAGMENT", joy.first.toString() + " " + joy.second.toString())
             binding.joystickRight.updatePosition(joy.first, joy.second)
         })
 
@@ -166,6 +164,8 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
 
             KeyEvent.KEYCODE_BUTTON_START -> binding.startButton.setImageDrawable(drawableStartButton)
             KeyEvent.KEYCODE_BACK -> binding.backButton.setImageDrawable(drawableBackButton)
+            // moved to "SELECT" with Android 11??
+            KeyEvent.KEYCODE_BUTTON_SELECT -> binding.backButton.setImageDrawable(drawableBackButton)
 
             KeyEvent.KEYCODE_BUTTON_A -> binding.aButton.background = drawableToSet
             KeyEvent.KEYCODE_BUTTON_B -> binding.bButton.background = drawableToSet
@@ -228,12 +228,4 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
         }
         binding.inputDeviceStatus.text = statusString
     }
-
-    /**
-     * OnChanged is needed for the Observer interface
-     */
-
-/*    override fun onChanged(t: Int?) {
-        TODO("Not yet implemented")
-    }*/
 }

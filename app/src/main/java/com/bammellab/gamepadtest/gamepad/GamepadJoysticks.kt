@@ -2,12 +2,14 @@
 
 package com.bammellab.gamepadtest.gamepad
 
-import android.os.Vibrator
+import android.app.Activity
+import android.content.Context
 import android.util.Log
-import android.view.InputDevice
 import android.view.MotionEvent
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
+import androidx.preference.PreferenceManager
+import com.bammellab.gamepadtest.ui.settings.SettingsFragment
 import kotlin.math.abs
 
 interface UpdateJoystickData {
@@ -32,28 +34,12 @@ class GamepadJoysticks {
 
     val logger = GamepadServices.gamepadLoggerService
 
-    init {
-        getDeviceInfo()
-    }
+    fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
+        val doLogMotionEvents = sharedPreferences.getBoolean("motion", true)
 
-    private fun getDeviceInfo() {
-        val ids = InputDevice.getDeviceIds()
-        var str = StringBuilder("#devs: " + ids.size)
-        var dev: InputDevice
-        var vib: Vibrator
-        for (id in ids) {
-            dev = InputDevice.getDevice(id)
-            str.append("dev $id")
-            str.append("name: " + dev.name)
-            vib = dev.vibrator
-            str.append(" has vib: " + vib.hasVibrator())
-            str.append("\n")
 
-        }
-        Log.i("GAMEPAD DEVS:", "$str")
-    }
-
-    fun processJoystickInput(event: MotionEvent) {
+        val action = event.action
 
         with(event) {
             leftX = getCenteredAxis(this, MotionEvent.AXIS_X)
@@ -67,6 +53,46 @@ class GamepadJoysticks {
             dPadX = getAxisValue(MotionEvent.AXIS_HAT_X)
             dPadY = getAxisValue(MotionEvent.AXIS_HAT_Y)
 
+        }
+
+        if (doLogMotionEvents) {
+            if (leftX != 0f
+                || leftY != 0f
+                || rightX != 0f
+                || rightY != 0f
+
+            ) {
+                val logString = StringBuilder()
+                    .append("leftX ", String.format("%4.2f", leftX))
+                    .append(" leftY ", String.format("%4.2f", leftY))
+                    .append(" rightX ", String.format("%4.2f", rightX))
+                    .append(" rightY ", String.format("%4.2f", rightY))
+                    .toString()
+
+                Log.v("Joystick", logString)
+            }
+
+            if (lTrigger != 0f
+                || rTrigger != 0f
+            ) {
+                val logString = StringBuilder()
+                    .append("left Trig ", String.format("%4.2f", lTrigger))
+                    .append(" right Trig ", String.format("%4.2f", rTrigger))
+                    .toString()
+
+                Log.v("Triggers", logString)
+            }
+
+            if (dPadX != 0f
+                || dPadY != 0f
+            ) {
+                val logString = StringBuilder()
+                    .append("dPadX ", String.format("%4.2f", dPadX))
+                    .append(" dPadY ", String.format("%4.2f", dPadY))
+                    .toString()
+
+                Log.v("Dpad", logString)
+            }
         }
 
         if (listener != null) {
@@ -107,7 +133,7 @@ class GamepadJoysticks {
         if (abs(axisValue) > range.flat) {
             return axisValue
         }
-   
+
         return 0f
     }
 
