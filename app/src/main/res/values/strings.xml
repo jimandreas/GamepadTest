@@ -41,7 +41,7 @@
 
     <string name="about_open_source">Source code:</string>
     <string name="about_open_source_description">This app has source code available on Github. See the following URL:</string>
-    <string name="about_open_source_url">https://github.com/bammellab/GamepadTest</string>
+    <string name="about_open_source_url">https://github.com/bammellab/GamepadTest#gamepadtest</string>
 
     <string name="about_author">Developed by:</string>
     <string name="about_author_name">Jim Andreas</string>
@@ -50,9 +50,23 @@
 
     <!--  Settings  -->
 
-    <string name="action_about_activity">Settings</string>
-    <string name="settings_window">Settings Window</string>
+    <string name="settings_header">Settings</string>
+
     <string name="settings_log_motion">Log Motion Events</string>
+    <string name="settings_log_motion_description">Events are written to the Logcat and are available using Android Studio.</string>
+
+    <string name="settings_about">Settings Window</string>
+
+    <string name="settings_about_activity">About this app…</string>
+    <string name="settings_about_activity_clickme">Click here for more information.</string>
+
+    <string name="settings_github_repo">Source code</string>
+    <string name="settings_github_about">This app has source code available on Github. Click here to go to Github.</string>
+    <string name="settings_github_repo_url">https://github.com/bammellab/GamepadTest#gamepadtest</string>
+
+    <!--  About activity  -->
+
+    <string name="action_about_activity">About this app…</string>
 
     <!--  Scan  -->
 

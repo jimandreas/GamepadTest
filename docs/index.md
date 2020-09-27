@@ -1,4 +1,8 @@
-# Index page of the Gamepad Test information
+# GamepadTest Android Application
+
+Screenshot of the GamepadTest application:
+
+![Screenshot](img/AppScreenshot.PNG)
 
 Gamepad used for developement:
 
