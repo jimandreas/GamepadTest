@@ -30,6 +30,11 @@
                 android:data="@string/settings_github_repo_url" />
         </Preference>
 
+        <Preference android:title="Version"
+            android:summary="@string/versionName">
+        </Preference>
+
+
     </PreferenceCategory>
 
 </PreferenceScreen>

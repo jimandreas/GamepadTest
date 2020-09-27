@@ -45,6 +45,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    /*https://stackoverflow.com/a/55432749*/
+    applicationVariants.all { variant ->
+        variant.resValue "string",
+                "versionName",
+                "${buildConfig.version.major}.${buildConfig.version.minor}.${buildConfig.version.patch}"
+
+    }
 }
 
 // signing solution courtesy of http://gist.github.com/gabrielemariotti/6856974
