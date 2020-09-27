@@ -81,5 +81,6 @@
 
     <string name="pref_title_nightmode">Night mode</string>
     <string name="pref_title_nightmode_summary">Turn on to reduce glare</string>
+    <string name="funky">FUNKY CONTROLLER</string>
 
 </resources>

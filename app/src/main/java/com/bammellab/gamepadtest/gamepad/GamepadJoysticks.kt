@@ -3,13 +3,11 @@
 package com.bammellab.gamepadtest.gamepad
 
 import android.app.Activity
-import android.content.Context
 import android.util.Log
 import android.view.MotionEvent
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
-import com.bammellab.gamepadtest.ui.settings.SettingsFragment
 import kotlin.math.abs
 
 interface UpdateJoystickData {
@@ -37,9 +35,6 @@ class GamepadJoysticks {
     fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
         val doLogMotionEvents = sharedPreferences.getBoolean("motion", true)
-
-
-        val action = event.action
 
         with(event) {
             leftX = getCenteredAxis(this, MotionEvent.AXIS_X)

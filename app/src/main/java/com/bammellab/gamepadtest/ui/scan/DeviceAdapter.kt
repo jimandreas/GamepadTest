@@ -53,7 +53,7 @@ class DeviceAdapter(
         if (position <= devStringList.size-1) {
             holder.deviceInfoText.text = devStringList[position]
         } else {
-            holder.deviceInfoText.text = "FUNKY CONTROLLER"
+            holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
         }
     }
 

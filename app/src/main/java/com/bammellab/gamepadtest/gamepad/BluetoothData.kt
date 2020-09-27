@@ -1,4 +1,6 @@
-@file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate")
+@file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate",
+    "UNUSED_VARIABLE", "ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE"
+)
 
 package com.bammellab.gamepadtest.gamepad
 
@@ -25,9 +27,6 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
     private val contextLocal = contextIn
     private var im: InputManager
     private var bluetoothAdapter: BluetoothAdapter? = null
-
-    private var inputDeviceNames = mutableListOf("")
-
     init {
         im = contextLocal.getSystemService(
             Context.INPUT_SERVICE
