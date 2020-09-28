@@ -42,7 +42,8 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
          * Bluetooth profiles with Input devices.
          * Just how to join the two sets of data is not obvious to me.
          */
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        // removed - this section throws an exception in emulators.
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             val manager = contextLocal.getSystemService(BluetoothManager::class.java)
             manager.adapter.getProfileProxy(
                 contextLocal,
@@ -73,7 +74,7 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
                     val doSomethingHere = profile
                 }
             }, BluetoothProfile.HEADSET)
-        }
+        }*/
 
         var bluetoothHeadset: BluetoothHeadset? = null
 
