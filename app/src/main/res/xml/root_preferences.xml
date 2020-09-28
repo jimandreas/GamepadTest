@@ -1,5 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <PreferenceCategory app:title="@string/settings_header">
 
@@ -23,6 +24,16 @@
         </Preference>
 
         <Preference
+            android:title="@string/settings_playstore"
+            android:summary="@string/settings_playstore_clickme">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/settings_playstore_url"
+                />
+        </Preference>
+
+
+        <Preference
             android:title="@string/settings_github_repo"
             android:summary="@string/settings_github_about">
             <intent
@@ -30,8 +41,24 @@
                 android:data="@string/settings_github_repo_url" />
         </Preference>
 
-        <Preference android:title="Version"
-            android:summary="@string/versionName">
+        <Preference
+            android:key="app_version"
+            android:title="Version"
+
+            android:clickable="false"
+            android:selectable="false"
+            android:layout_marginBottom="@dimen/very_big_padding">
+        </Preference>
+
+        <!--The extra two unused Preferences are a work-around-->
+        <!--The Bottom Nav Menu covers up the bottom preference in Lanscape!-->
+        <!--How to add padding in this XML file is not obvious but this trick works-->
+        <Preference
+            android:title="">
+        </Preference>
+
+        <Preference
+            android:title="">
         </Preference>
 
 
