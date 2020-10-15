@@ -14,7 +14,7 @@ object Util {
         if (textView != null && null != context) {
             textView.setOnClickListener {
                 val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clip = ClipData.newPlainText(clipLabel, textView!!.text)
+                val clip = ClipData.newPlainText(clipLabel, textView.text)
                 clipboard.setPrimaryClip(clip) // API 30
                 Snackbar.make(textView,
                     "Copied $clipLabel", Snackbar.LENGTH_LONG).show()

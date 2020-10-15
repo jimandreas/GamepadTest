@@ -60,6 +60,10 @@
     <string name="settings_about_activity">About this app…</string>
     <string name="settings_about_activity_clickme">Click here for more information.</string>
 
+    <string name="settings_playstore">This app in the Play Store…</string>
+    <string name="settings_playstore_clickme">Click here to see the Google Play Store listing.</string>
+    <string name="settings_playstore_url">https://play.google.com/store/apps/details?id=com.bammellab.gamepadtest</string>
+
     <string name="settings_github_repo">Source code</string>
     <string name="settings_github_about">This app has source code available on Github. Click here to go to Github.</string>
     <string name="settings_github_repo_url">https://github.com/bammellab/GamepadTest#gamepadtest</string>
@@ -81,5 +85,6 @@
 
     <string name="pref_title_nightmode">Night mode</string>
     <string name="pref_title_nightmode_summary">Turn on to reduce glare</string>
+    <string name="funky">FUNKY CONTROLLER</string>
 
 </resources>

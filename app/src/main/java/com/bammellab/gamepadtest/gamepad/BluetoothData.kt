@@ -1,4 +1,6 @@
-@file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate")
+@file:Suppress("UnnecessaryVariable", "LiftReturnOrAssignment", "MemberVisibilityCanBePrivate",
+    "UNUSED_VARIABLE", "ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE"
+)
 
 package com.bammellab.gamepadtest.gamepad
 
@@ -25,9 +27,6 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
     private val contextLocal = contextIn
     private var im: InputManager
     private var bluetoothAdapter: BluetoothAdapter? = null
-
-    private var inputDeviceNames = mutableListOf("")
-
     init {
         im = contextLocal.getSystemService(
             Context.INPUT_SERVICE
@@ -43,7 +42,8 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
          * Bluetooth profiles with Input devices.
          * Just how to join the two sets of data is not obvious to me.
          */
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        // removed - this section throws an exception in emulators.
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             val manager = contextLocal.getSystemService(BluetoothManager::class.java)
             manager.adapter.getProfileProxy(
                 contextLocal,
@@ -74,7 +74,7 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
                     val doSomethingHere = profile
                 }
             }, BluetoothProfile.HEADSET)
-        }
+        }*/
 
         var bluetoothHeadset: BluetoothHeadset? = null
 
