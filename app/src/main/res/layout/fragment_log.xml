@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+        <layout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            >
+
+            <data>
+                <variable
+                    name="viewModel"
+                    type="com.bammellab.gamepadtest.ui.log.LogViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="@dimen/custom_match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="60dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_log_thing"
+            android:layout_width="@dimen/recycler_scroll_width"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:paddingStart="@dimen/recycler_padding_start"
+            android:paddingEnd="@dimen/default_padding"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </ScrollView>
+</layout>

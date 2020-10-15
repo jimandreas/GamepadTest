@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GamepadTest</string>
     <string name="title_scan">Scan</string>
+    <string name="title_log">Log</string>
     <string name="title_gamepad">Gamepad</string>
     <string name="title_settings">Settings</string>
 

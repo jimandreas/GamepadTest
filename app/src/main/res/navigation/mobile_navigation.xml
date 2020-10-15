@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_scan" />
 
     <fragment
+        android:id="@+id/navigation_log"
+        android:name="com.bammellab.gamepadtest.ui.log.LogFragment"
+        android:label="@string/title_log"
+        tools:layout="@layout/fragment_log" />
+
+    <fragment
         android:id="@+id/navigation_settings"
         android:name="com.bammellab.gamepadtest.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
