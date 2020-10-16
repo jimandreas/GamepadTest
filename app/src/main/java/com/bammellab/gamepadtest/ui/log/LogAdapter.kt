@@ -18,27 +18,22 @@ class LogAdapter(
     private val contextLocal: Context,
     private val logViewModel: LogViewModel,
     private val lifecycleOwner: LifecycleOwner,
-    private val clickHandler: DeviceAdapterOnClickHandler
 ) : RecyclerView.Adapter<DeviceViewHolder>() {
 
-    private var devStringList: List<String> = listOf("FUNKY FUNKY")
+    private var devStringList: List<String> = listOf("")
 
     inner class DeviceViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
-        val deviceInfoText = view.findViewById<View>(R.id.recycler_device_info_text) as TextView
+        val deviceInfoText = view.findViewById<View>(R.id.logging_textview) as TextView
         override fun onClick(v: View?) {
             TODO("Not yet implemented")
         }
     }
 
-    interface DeviceAdapterOnClickHandler {
-        fun onClick()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val inflateStuff = LayoutInflater.from(parent.context)
-        val rootView = inflateStuff.inflate(R.layout.list_item, parent, false)
+        val rootView = inflateStuff.inflate(R.layout.fragment_log_list_item, parent, false)
 
         return DeviceViewHolder(rootView)
     }
@@ -46,14 +41,14 @@ class LogAdapter(
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         Log.i("DeviceAdapter", "OnBIND")
 
-        logViewModel.devInfoStringArray.observe(lifecycleOwner, {
+        logViewModel.logInfoStringArray.observe(lifecycleOwner, {
             devStringList = it
         })
 
         if (position <= devStringList.size-1) {
             holder.deviceInfoText.text = devStringList[position]
         } else {
-            holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
+            holder.deviceInfoText.text = contextLocal.getString(R.string.empty_list)
         }
     }
 

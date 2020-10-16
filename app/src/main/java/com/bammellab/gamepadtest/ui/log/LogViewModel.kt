@@ -7,14 +7,60 @@ import androidx.lifecycle.ViewModel
 class LogViewModel : ViewModel() {
 
 
-    private val _devInfoStringArray = MutableLiveData<List<String>>().apply {
-        value = listOf("")
+    private val _logInfoStringArray = MutableLiveData<List<String>>().apply {
+        value = listOf(
+            """
+                Logging recycler view
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thingthis
+                that
+                the other thingthis
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                this
+                that
+                the other thing
+                
+                
+            """.trimIndent()
+        )
 
     }
-    val devInfoStringArray: LiveData<List<String>> = _devInfoStringArray
+    val logInfoStringArray: LiveData<List<String>> = _logInfoStringArray
 
-    fun updateDevStringArray(devInfo: List<String>) {
-        _devInfoStringArray.value = devInfo
+    fun updateLogInfoStringArray(devInfo: List<String>) {
+        _logInfoStringArray.value = devInfo
     }
 
     // TODO: copy the contents to the clipboard on a long click

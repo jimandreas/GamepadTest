@@ -88,4 +88,8 @@
     <string name="pref_title_nightmode_summary">Turn on to reduce glare</string>
     <string name="funky">FUNKY CONTROLLER</string>
 
+    <!--  Logging fragment  -->
+
+    <string name="empty_list">EMPTY LIST</string>
+
 </resources>

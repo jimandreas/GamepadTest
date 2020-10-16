@@ -21,7 +21,6 @@ class LogFragment : Fragment() {
     private lateinit var logViewModel: LogViewModel
     private lateinit var binding: FragmentLogBinding
     private lateinit var bcontext: Context
-    private val sourceToString = SourceDataToString()
 
     private lateinit var theRecyclerView: RecyclerView
     private lateinit var logAdapter: LogAdapter
@@ -42,7 +41,7 @@ class LogFragment : Fragment() {
         binding.viewModel = logViewModel
         bcontext = binding.root.context
 
-        theRecyclerView = binding.recyclerLogThing
+        theRecyclerView = binding.fragmentLogRecyclerView
         val layoutManager = LinearLayoutManager(binding.root.context)
         theRecyclerView.layoutManager = layoutManager
         theRecyclerView.setHasFixedSize(false)
@@ -50,16 +49,16 @@ class LogFragment : Fragment() {
         logAdapter = LogAdapter(
             binding.root.context,
             logViewModel,
-            this,
-            object : LogAdapter.DeviceAdapterOnClickHandler {
-                override fun onClick() {
-                    Toast.makeText(
-                        activity,
-                        "Recycler view - CardView click",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
+            this )
+//            object : LogAdapter.DeviceAdapterOnClickHandler {
+//                override fun onClick() {
+//                    Toast.makeText(
+//                        activity,
+//                        "Recycler view - CardView click",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            })
         theRecyclerView.adapter = logAdapter
 
         return binding.root

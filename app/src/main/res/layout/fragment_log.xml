@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-        <layout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <data>
-                <variable
-                    name="viewModel"
-                    type="com.bammellab.gamepadtest.ui.log.LogViewModel" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bammellab.gamepadtest.ui.log.LogViewModel" />
     </data>
 
     <ScrollView
@@ -16,7 +15,7 @@
         android:paddingBottom="60dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_log_thing"
+            android:id="@+id/fragment_log_recycler_view"
             android:layout_width="@dimen/recycler_scroll_width"
             android:layout_height="wrap_content"
             android:fadeScrollbars="false"

@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bammellab.gamepadtest.R
-import com.bammellab.gamepadtest.ui.scan.DeviceAdapter.DeviceViewHolder
+import com.bammellab.gamepadtest.ui.scan.ScanDeviceAdapter.DeviceViewHolder
 
 
-class DeviceAdapter(
+class ScanDeviceAdapter(
     private val contextLocal: Context,
     private val scanViewModel: ScanViewModel,
     private val lifecycleOwner: LifecycleOwner,
@@ -38,7 +38,7 @@ class DeviceAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val inflateStuff = LayoutInflater.from(parent.context)
-        val rootView = inflateStuff.inflate(R.layout.list_item, parent, false)
+        val rootView = inflateStuff.inflate(R.layout.fragment_scan_list_item, parent, false)
 
         return DeviceViewHolder(rootView)
     }
