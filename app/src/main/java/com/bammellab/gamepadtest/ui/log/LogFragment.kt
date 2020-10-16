@@ -61,6 +61,11 @@ class LogFragment : Fragment() {
 //            })
         theRecyclerView.adapter = logAdapter
 
+        logViewModel.logInfoStringArray.observe(viewLifecycleOwner, {
+            val stringList = it
+            logAdapter.notifyDataSetChanged()
+        })
+
         return binding.root
     }
 

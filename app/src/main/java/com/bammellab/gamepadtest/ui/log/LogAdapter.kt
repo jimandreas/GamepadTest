@@ -11,18 +11,18 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bammellab.gamepadtest.R
-import com.bammellab.gamepadtest.ui.log.LogAdapter.DeviceViewHolder
+import com.bammellab.gamepadtest.ui.log.LogAdapter.LogViewHolder
 
 
 class LogAdapter(
     private val contextLocal: Context,
     private val logViewModel: LogViewModel,
     private val lifecycleOwner: LifecycleOwner,
-) : RecyclerView.Adapter<DeviceViewHolder>() {
+) : RecyclerView.Adapter<LogViewHolder>() {
 
     private var devStringList: List<String> = listOf("")
 
-    inner class DeviceViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
+    inner class LogViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
         val deviceInfoText = view.findViewById<View>(R.id.logging_textview) as TextView
@@ -31,29 +31,27 @@ class LogAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogViewHolder {
         val inflateStuff = LayoutInflater.from(parent.context)
         val rootView = inflateStuff.inflate(R.layout.fragment_log_list_item, parent, false)
 
-        return DeviceViewHolder(rootView)
+        return LogViewHolder(rootView)
     }
 
-    override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
         Log.i("DeviceAdapter", "OnBIND")
 
-        logViewModel.logInfoStringArray.observe(lifecycleOwner, {
-            devStringList = it
-        })
-
-        if (position <= devStringList.size-1) {
-            holder.deviceInfoText.text = devStringList[position]
+        if ( logViewModel.logInfoStringArray.value != null) {
+            val text =  logViewModel.logInfoStringArray.value!![position]
+            holder.deviceInfoText.text = text
         } else {
             holder.deviceInfoText.text = contextLocal.getString(R.string.empty_list)
         }
     }
 
     override fun getItemCount(): Int {
-        return devStringList.size
+        val size =  logViewModel.logInfoStringArray.value?.size ?: 0
+        return size
     }
 
 }

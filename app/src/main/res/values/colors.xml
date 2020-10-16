@@ -9,4 +9,8 @@
     <color name="window_background">#FFC0C0C0</color>
     <color name="list_background_grey">#C0C0C0</color>
     <color name="theme_accent">#FF4081</color>
+
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
 </resources>
