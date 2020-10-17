@@ -5,15 +5,12 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bammellab.gamepadtest.gamepad.GamepadJoysticks
 import com.bammellab.gamepadtest.gamepad.GamepadServices
-import com.bammellab.gamepadtest.gamepad.UpdateLogString
+import com.bammellab.gamepadtest.gamepad.UpdateLogList
 
-class LogViewModel : ViewModel(), UpdateLogString {
+class LogViewModel : ViewModel(), UpdateLogList {
 
-    val firstString : Spanned =
-        HtmlCompat.fromHtml("Logging recycler View", HtmlCompat.FROM_HTML_MODE_LEGACY)
-    private val logList = mutableListOf(firstString)
+    private val logList = GamepadServices.gamepadLoggerService.getLogList()
 
     private val _logInfoStringArray = MutableLiveData<List<Spanned>>().apply {
         value = logList
@@ -22,19 +19,11 @@ class LogViewModel : ViewModel(), UpdateLogString {
     val logInfoStringArray: LiveData<List<Spanned>> = _logInfoStringArray
 
     init {
-        GamepadServices.gamepadJoystickService.addLogListener(this)
+        GamepadServices.gamepadLoggerService.addLogListener(this)
     }
 
-    // TODO: copy the contents to the clipboard on a long click
-    fun onClick() {
-
-    }
-
-    override fun addNewString(str: Spanned) {
-        //logList.add(str)
-
-        logList.add(1, str)
-        _logInfoStringArray.value = logList
+    override fun updateList(list:MutableList<Spanned>) {
+        _logInfoStringArray.value = list
     }
 }
 

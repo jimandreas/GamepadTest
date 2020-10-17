@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bammellab.gamepadtest.databinding.FragmentLogBinding
-import com.bammellab.gamepadtest.gamepad.SourceDataToString
+import com.bammellab.gamepadtest.gamepad.GamepadServices
 
 
 class LogFragment : Fragment() {
@@ -65,6 +64,11 @@ class LogFragment : Fragment() {
             val stringList = it
             logAdapter.notifyDataSetChanged()
         })
+
+        binding.clearLogListButton.setOnClickListener {
+            GamepadServices.gamepadLoggerService.clearLogList()
+            logAdapter.notifyDataSetChanged()
+        }
 
         return binding.root
     }

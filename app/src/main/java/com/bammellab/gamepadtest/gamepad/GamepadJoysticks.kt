@@ -13,6 +13,7 @@ import androidx.core.text.HtmlCompat.fromHtml
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
+import com.bammellab.gamepadtest.R
 import kotlin.math.abs
 
 interface UpdateJoystickData {
@@ -21,13 +22,8 @@ interface UpdateJoystickData {
     fun updateTriggers(left: Float, right: Float)
 }
 
-interface UpdateLogString {
-    fun addNewString(str: Spanned)
-}
-
 class GamepadJoysticks {
     private var listener: UpdateJoystickData? = null
-    private var listenerLogList = mutableListOf<UpdateLogString?>()
 
     private var leftX: Float = 0f
     private var leftY: Float = 0f
@@ -44,7 +40,9 @@ class GamepadJoysticks {
 
     fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
-        val doLogMotionEvents = sharedPreferences.getBoolean("motion", true)
+        val logMotionEventsKey = activityIn.getString(R.string.settings_log_motion_key)
+        val doLogMotionEvents = sharedPreferences.getBoolean(
+            logMotionEventsKey, true)
 
         with(event) {
             leftX = getCenteredAxis(this, MotionEvent.AXIS_X)
@@ -120,27 +118,15 @@ class GamepadJoysticks {
     private fun logActivity(logString: String) {
         Log.v("Log", logString)
 
+        val sendThisString: Spanned = fromHtml(logString, FROM_HTML_MODE_LEGACY)
 
-        val sendThisString : Spanned = fromHtml(logString, FROM_HTML_MODE_LEGACY)
-
-        // HTML formatting
-
-//        val fontSetting = "<font face=”monospace“ color=”#FFFF00”>"
-//        val encoded = TextUtils.htmlEncode(fontSetting)
-//        val sendThisString : Spanned = fromHtml(fontSetting+logString, FROM_HTML_MODE_LEGACY)
-
-        for (listener in listenerLogList) {
-            listener?.addNewString(sendThisString)
-        }
+        GamepadServices.gamepadLoggerService.addLogLine(sendThisString)
     }
 
     fun initOnClickInterface(listener: UpdateJoystickData) {
         this.listener = listener
     }
 
-    fun addLogListener(listener: UpdateLogString) {
-        listenerLogList.add(listener)
-    }
 
     private fun getCenteredAxis(
         event: MotionEvent,

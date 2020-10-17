@@ -39,8 +39,6 @@ class LogAdapter(
     }
 
     override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
-        Log.i("DeviceAdapter", "OnBIND")
-
         if ( logViewModel.logInfoStringArray.value != null) {
             val text =  logViewModel.logInfoStringArray.value!![position]
             holder.deviceInfoText.text = text
