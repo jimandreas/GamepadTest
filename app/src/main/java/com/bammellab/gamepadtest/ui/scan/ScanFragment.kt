@@ -70,6 +70,7 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
                 }
             })
         theRecyclerView.adapter = scanDeviceAdapter
+        updateDeviceStringArray()
 
         return binding.root
     }

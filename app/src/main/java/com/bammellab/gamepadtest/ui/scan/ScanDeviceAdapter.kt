@@ -1,4 +1,4 @@
-@file:Suppress("UnnecessaryVariable")
+@file:Suppress("UnnecessaryVariable", "JoinDeclarationAndAssignment")
 
 package com.bammellab.gamepadtest.ui.scan
 
@@ -21,8 +21,6 @@ class ScanDeviceAdapter(
     private val clickHandler: DeviceAdapterOnClickHandler
 ) : RecyclerView.Adapter<DeviceViewHolder>() {
 
-    private var devStringList: List<String> = listOf("FUNKY FUNKY")
-
     inner class DeviceViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
@@ -44,21 +42,21 @@ class ScanDeviceAdapter(
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        Log.i("DeviceAdapter", "OnBIND")
-
-        scanViewModel.devInfoStringArray.observe(lifecycleOwner, {
-            devStringList = it
-        })
-
-        if (position <= devStringList.size-1) {
-            holder.deviceInfoText.text = devStringList[position]
+        val strings : List<String>
+        if (scanViewModel.devInfoStringArray.value == null) {
+            holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
+            return
+        }
+        strings = scanViewModel.devInfoStringArray.value as List<String>
+        if (position <= scanViewModel.devInfoStringArray.value!!.size-1) {
+            holder.deviceInfoText.text = strings[position]
         } else {
             holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
         }
     }
 
     override fun getItemCount(): Int {
-        return devStringList.size
+        return scanViewModel.devInfoStringArray.value!!.size
     }
 
 }
