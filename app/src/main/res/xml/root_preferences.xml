@@ -7,7 +7,7 @@
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:icon="@drawable/ic_videogame_asset_24px"
-            app:key="motion"
+            app:key="@string/settings_log_motion_key"
             app:title="@string/settings_log_motion" />
 
     </PreferenceCategory>

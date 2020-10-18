@@ -2,6 +2,7 @@
 
 package com.bammellab.gamepadtest
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.InputDevice
@@ -15,10 +16,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.bammellab.gamepadtest.gamepad.GamepadServices
 
-class MainActivity : AppCompatActivity(), LifecycleObserver {
+class MainActivity :
+    AppCompatActivity(), LifecycleObserver, SharedPreferences.OnSharedPreferenceChangeListener  {
 
     private lateinit var navView: BottomNavigationView
 
@@ -28,11 +31,15 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         navView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_scan, R.id.navigation_gamepad, R.id.navigation_settings
+                R.id.navigation_scan,
+                R.id.navigation_gamepad,
+                R.id.navigation_log,
+                R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -49,11 +56,19 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
                 R.id.navigation_scan -> {
                     toolBar.setDisplayShowTitleEnabled(true)
                 }
+                R.id.navigation_log -> {
+                    toolBar.setDisplayShowTitleEnabled(true)
+                }
                 else -> {
                     toolBar.setDisplayShowTitleEnabled(true)
                 }
             }
         }
+
+        // Listen for preference changes
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        prefs.registerOnSharedPreferenceChangeListener(this)
+
     }
 
     /**
@@ -90,7 +105,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return if (event.source and InputDevice.SOURCE_JOYSTICK == InputDevice.SOURCE_JOYSTICK
             && event.action == MotionEvent.ACTION_MOVE
         ) {
-            joyst.processJoystickInput(this, event)
+            try {  // Seeing an exception in this call on some devices.  Not clear what the problem is.
+                joyst.processJoystickInput(this, event)
+            } catch (e: Exception) {
+                Log.e("onGenericMotionEvent", "Exception caught")
+            }
             true
         } else {
             super.onGenericMotionEvent(event)
@@ -120,6 +139,24 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
             if ((flags and sys) == sys) { // is a system keycode
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     finish()
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        super.onDestroy()
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        val logMotionEventsKey = getString(R.string.settings_log_motion_key)
+        when (key) {
+            logMotionEventsKey -> {
+                val prefbool = sharedPreferences?.getBoolean(logMotionEventsKey, true)
+                if (prefbool != null) {
+                    GamepadServices.gamepadLoggerService.flagToLogMotionEvents(prefbool)
                 }
             }
         }

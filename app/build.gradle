@@ -40,7 +40,10 @@ android {
 
     buildTypes {
         release {
+            // save build/outputs/mapping/<build-type>/mapping.txt file!
+            // https://developer.android.com/studio/build/shrink-code#decode-stack-trace
             minifyEnabled true // <-- enable minification
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

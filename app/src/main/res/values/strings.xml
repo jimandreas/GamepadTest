@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GamepadTest</string>
     <string name="title_scan">Scan</string>
+    <string name="title_log">Log</string>
     <string name="title_gamepad">Gamepad</string>
     <string name="title_settings">Settings</string>
 
@@ -18,10 +19,22 @@
     <string name="aButton">A</string>
     <string name="imagedesc">Gamepad Test</string>
 
+    <!--  Scan fragment strings -->
+
+    <string name="temp_contents">cardview temp contents</string>
+    <string name="no_controllers">No Controllers Found</string>
+
+    <!--Log fragment strings-->
+
+    <string name="clear_log_list_button">Clear Log</string>
+    <string name="empty_list">EMPTY LIST</string>
+    <string name="clear_logging_button">Clear logging button</string>
+
     <!--About activity strings-->
 
     <string name="about">About</string>
     <string name="about_this_app">About this app</string>
+    <string name="action_about_activity">About this app</string>
     <string name="title_activity_about">About</string>
     <string name="about_copyright">Copyright and EULA</string>
     <string name="about_copyright_disclaimer">TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</string>
@@ -53,6 +66,7 @@
     <string name="settings_header">Settings</string>
 
     <string name="settings_log_motion">Log Motion Events</string>
+    <string name="settings_log_motion_key">logmotionboolean</string>
     <string name="settings_log_motion_description">Events are written to the Logcat and are available using Android Studio.</string>
 
     <string name="settings_about">Settings Window</string>
@@ -68,23 +82,9 @@
     <string name="settings_github_about">This app has source code available on Github. Click here to go to Github.</string>
     <string name="settings_github_repo_url">https://github.com/bammellab/GamepadTest#gamepadtest</string>
 
-    <!--  About activity  -->
 
-    <string name="action_about_activity">About this app…</string>
-
-    <!--  Scan  -->
-
-    <string name="temp_contents">cardview temp contents</string>
-    <string name="no_controllers">No Controllers Found</string>
-
-    <!-- Settings fragment -->
-    <string name="title_activity_settings">GamepadTest Settings</string>
-
-    <string name="pref_motion_events">Log motion events in Logcat</string>
-    <string name="pref_motion_events_summary">Turn on to see joystick and trigger data</string>
-
-    <string name="pref_title_nightmode">Night mode</string>
-    <string name="pref_title_nightmode_summary">Turn on to reduce glare</string>
     <string name="funky">FUNKY CONTROLLER</string>
+
+
 
 </resources>

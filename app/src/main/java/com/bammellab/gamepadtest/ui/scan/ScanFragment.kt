@@ -28,7 +28,7 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
     private val sourceToString = SourceDataToString()
 
     private lateinit var theRecyclerView: RecyclerView
-    private lateinit var deviceAdapter: DeviceAdapter
+    private lateinit var scanDeviceAdapter: ScanDeviceAdapter
     private lateinit var contextLocal: Context
 
     override fun onCreateView(
@@ -56,11 +56,11 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
         theRecyclerView.layoutManager = layoutManager
         theRecyclerView.setHasFixedSize(false)
 
-        deviceAdapter = DeviceAdapter(
+        scanDeviceAdapter = ScanDeviceAdapter(
             binding.root.context,
             scanViewModel,
             this,
-            object : DeviceAdapter.DeviceAdapterOnClickHandler {
+            object : ScanDeviceAdapter.DeviceAdapterOnClickHandler {
                 override fun onClick() {
                     Toast.makeText(
                         activity,
@@ -69,7 +69,8 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
                     ).show()
                 }
             })
-        theRecyclerView.adapter = deviceAdapter
+        theRecyclerView.adapter = scanDeviceAdapter
+        updateDeviceStringArray()
 
         return binding.root
     }
@@ -87,7 +88,7 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
         val scanner = BluetoothData(binding.root.context)
         val deviceArray = scanner.assembleDescriptionStrings()
         scanViewModel.updateDevStringArray(deviceArray)
-        deviceAdapter.notifyDataSetChanged()
+        scanDeviceAdapter.notifyDataSetChanged()
     }
 
     override fun onInputDeviceAdded(deviceId: Int) {

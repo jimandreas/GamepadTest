@@ -3,11 +3,17 @@
 package com.bammellab.gamepadtest.gamepad
 
 import android.app.Activity
+import android.text.Html
+import android.text.Spanned
+import android.text.TextUtils
 import android.util.Log
 import android.view.MotionEvent
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
+import androidx.core.text.HtmlCompat.fromHtml
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
+import com.bammellab.gamepadtest.R
 import kotlin.math.abs
 
 interface UpdateJoystickData {
@@ -34,7 +40,9 @@ class GamepadJoysticks {
 
     fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
-        val doLogMotionEvents = sharedPreferences.getBoolean("motion", true)
+        val logMotionEventsKey = activityIn.getString(R.string.settings_log_motion_key)
+        val doLogMotionEvents = sharedPreferences.getBoolean(
+            logMotionEventsKey, true)
 
         with(event) {
             leftX = getCenteredAxis(this, MotionEvent.AXIS_X)
@@ -58,35 +66,38 @@ class GamepadJoysticks {
 
             ) {
                 val logString = StringBuilder()
-                    .append("leftX ", String.format("%4.2f", leftX))
-                    .append(" leftY ", String.format("%4.2f", leftY))
-                    .append(" rightX ", String.format("%4.2f", rightX))
-                    .append(" rightY ", String.format("%4.2f", rightY))
+                    .append("STICK:")
+                    .append("Lx", String.format("%+5.2f", leftX))
+                    .append(" Ly", String.format("%+5.2f", leftY))
+                    .append(" Rx", String.format("%+5.2f", rightX))
+                    .append(" Ry", String.format("%+5.2f", rightY))
                     .toString()
 
-                Log.v("Joystick", logString)
+                logActivity(  logString)
             }
 
             if (lTrigger != 0f
                 || rTrigger != 0f
             ) {
                 val logString = StringBuilder()
-                    .append("left Trig ", String.format("%4.2f", lTrigger))
-                    .append(" right Trig ", String.format("%4.2f", rTrigger))
+                    .append("TRIGR:")
+                    .append("Lt", String.format("%+5.2f", lTrigger))
+                    .append(" Rt", String.format("%+5.2f", rTrigger))
                     .toString()
 
-                Log.v("Triggers", logString)
+                logActivity(  logString)
             }
 
             if (dPadX != 0f
                 || dPadY != 0f
             ) {
                 val logString = StringBuilder()
-                    .append("dPadX ", String.format("%4.2f", dPadX))
-                    .append(" dPadY ", String.format("%4.2f", dPadY))
+                    .append("DPAD: ")
+                    .append("Dx", String.format("%+5.2f", dPadX))
+                    .append(" Dy", String.format("%+5.2f", dPadY))
                     .toString()
 
-                Log.v("Dpad", logString)
+                logActivity( logString)
             }
         }
 
@@ -104,9 +115,18 @@ class GamepadJoysticks {
         }
     }
 
+    private fun logActivity(logString: String) {
+        Log.v("Log", logString)
+
+        val sendThisString: Spanned = fromHtml(logString, FROM_HTML_MODE_LEGACY)
+
+        GamepadServices.gamepadLoggerService.addLogLine(sendThisString)
+    }
+
     fun initOnClickInterface(listener: UpdateJoystickData) {
         this.listener = listener
     }
+
 
     private fun getCenteredAxis(
         event: MotionEvent,

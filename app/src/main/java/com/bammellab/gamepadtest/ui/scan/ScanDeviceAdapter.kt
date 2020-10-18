@@ -1,4 +1,4 @@
-@file:Suppress("UnnecessaryVariable")
+@file:Suppress("UnnecessaryVariable", "JoinDeclarationAndAssignment")
 
 package com.bammellab.gamepadtest.ui.scan
 
@@ -11,17 +11,15 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bammellab.gamepadtest.R
-import com.bammellab.gamepadtest.ui.scan.DeviceAdapter.DeviceViewHolder
+import com.bammellab.gamepadtest.ui.scan.ScanDeviceAdapter.DeviceViewHolder
 
 
-class DeviceAdapter(
+class ScanDeviceAdapter(
     private val contextLocal: Context,
     private val scanViewModel: ScanViewModel,
     private val lifecycleOwner: LifecycleOwner,
     private val clickHandler: DeviceAdapterOnClickHandler
 ) : RecyclerView.Adapter<DeviceViewHolder>() {
-
-    private var devStringList: List<String> = listOf("FUNKY FUNKY")
 
     inner class DeviceViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
@@ -38,27 +36,27 @@ class DeviceAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val inflateStuff = LayoutInflater.from(parent.context)
-        val rootView = inflateStuff.inflate(R.layout.list_item, parent, false)
+        val rootView = inflateStuff.inflate(R.layout.fragment_scan_list_item, parent, false)
 
         return DeviceViewHolder(rootView)
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        Log.i("DeviceAdapter", "OnBIND")
-
-        scanViewModel.devInfoStringArray.observe(lifecycleOwner, {
-            devStringList = it
-        })
-
-        if (position <= devStringList.size-1) {
-            holder.deviceInfoText.text = devStringList[position]
+        val strings : List<String>
+        if (scanViewModel.devInfoStringArray.value == null) {
+            holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
+            return
+        }
+        strings = scanViewModel.devInfoStringArray.value as List<String>
+        if (position <= scanViewModel.devInfoStringArray.value!!.size-1) {
+            holder.deviceInfoText.text = strings[position]
         } else {
             holder.deviceInfoText.text = contextLocal.getString(R.string.funky)
         }
     }
 
     override fun getItemCount(): Int {
-        return devStringList.size
+        return scanViewModel.devInfoStringArray.value!!.size
     }
 
 }
