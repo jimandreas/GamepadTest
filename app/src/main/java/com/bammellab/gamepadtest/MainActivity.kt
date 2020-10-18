@@ -105,7 +105,11 @@ class MainActivity :
         return if (event.source and InputDevice.SOURCE_JOYSTICK == InputDevice.SOURCE_JOYSTICK
             && event.action == MotionEvent.ACTION_MOVE
         ) {
-            joyst.processJoystickInput(this, event)
+            try {  // Seeing an exception in this call on some devices.  Not clear what the problem is.
+                joyst.processJoystickInput(this, event)
+            } catch (e: Exception) {
+                Log.e("onGenericMotionEvent", "Exception caught")
+            }
             true
         } else {
             super.onGenericMotionEvent(event)
