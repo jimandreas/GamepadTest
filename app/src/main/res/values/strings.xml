@@ -39,7 +39,7 @@
     <string name="about_copyright">Copyright and EULA</string>
     <string name="about_copyright_disclaimer">TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</string>
     <string name="about_copyright_name">Apache License</string>
-    <string name="about_copyright_url">http://www.apache.org/licenses/</string>
+    <string name="about_copyright_url">https://raw.githubusercontent.com/bammellab/GamepadTest/master/LICENSE</string>
 
     <string name="about_description">Description</string>
     <string name="about_description_text">
