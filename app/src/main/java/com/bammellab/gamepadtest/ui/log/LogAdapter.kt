@@ -1,9 +1,8 @@
-@file:Suppress("UnnecessaryVariable")
+@file:Suppress("UnnecessaryVariable", "unused")
 
 package com.bammellab.gamepadtest.ui.log
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,14 +19,14 @@ class LogAdapter(
     private val lifecycleOwner: LifecycleOwner,
 ) : RecyclerView.Adapter<LogViewHolder>() {
 
-    private var devStringList: List<String> = listOf("")
+    //private var devStringList: List<String> = listOf("")
 
     inner class LogViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
         val deviceInfoText = view.findViewById<View>(R.id.logging_textview) as TextView
         override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+            // do nothing for now
         }
     }
 

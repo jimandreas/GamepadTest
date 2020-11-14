@@ -2,9 +2,15 @@
 
 package com.bammellab.gamepadtest.gamepad
 
+import android.content.Context
 import android.text.Spanned
+import android.text.SpannedString
 import android.util.Log
 import androidx.core.text.toSpannable
+import com.bammellab.gamepadtest.MainApplication
+import com.bammellab.gamepadtest.R
+import com.bammellab.gamepadtest.util.PrefsUtil
+
 
 interface UpdateLogList {
     fun updateList(list: MutableList<Spanned>)
@@ -12,15 +18,15 @@ interface UpdateLogList {
 
 class GamepadLogger {
 
-    private val logStringList: MutableList<Spanned>
+    private val logStringList: MutableList<Spanned> = mutableListOf(SpannedString(""))
     private val numToString = GamepadServices.keycodes.keyEventMap
     private var listenerLogList = mutableListOf<UpdateLogList?>()
     private var logMotionEventsFlag = true
 
     init {
-        logStringList = mutableListOf(
-            "Logging: Motion Events + Key Events".toSpannable()
-        )
+        val key = PrefsUtil.prefsContext!!.resources.getString(R.string.settings_log_motion_key)
+        val prefbool = PrefsUtil.getBool(key, true)
+        flagToLogMotionEvents(prefbool)
     }
 
     fun logKeyEventDown(keyCode: Int) {
