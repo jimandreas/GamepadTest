@@ -8,8 +8,8 @@
     <application
         android:name="com.bammellab.gamepadtest.MainApplication"
         android:label="@string/app_name"
-        android:icon="@drawable/ic_gamepad"
-        android:roundIcon="@drawable/ic_gamepad"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
