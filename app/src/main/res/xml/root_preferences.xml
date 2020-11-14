@@ -2,13 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <PreferenceCategory app:title="@string/settings_header">
+    <PreferenceCategory>
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
-            app:icon="@drawable/ic_videogame_asset_24px"
+            app:icon="@drawable/ic_gamepadgreyoutline"
             app:key="@string/settings_log_motion_key"
-            app:title="@string/settings_log_motion" />
+            app:title="@string/settings_log_motion"
+            app:summary="@string/settings_log_motion_description"/>
 
     </PreferenceCategory>
 

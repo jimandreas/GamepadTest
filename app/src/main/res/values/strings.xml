@@ -67,7 +67,7 @@
 
     <string name="settings_log_motion">Log Motion Events</string>
     <string name="settings_log_motion_key">logmotionboolean</string>
-    <string name="settings_log_motion_description">Events are written to the Logcat and are available using Android Studio.</string>
+    <string name="settings_log_motion_description">If turned off only Key Events will be logged.</string>
 
     <string name="settings_about">Settings Window</string>
 
