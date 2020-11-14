@@ -2,6 +2,8 @@
 
 package com.bammellab.gamepadtest.ui.gamepad
 
+import android.bluetooth.BluetoothAdapter
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -20,9 +22,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bammellab.gamepadtest.R
 import com.bammellab.gamepadtest.databinding.FragmentGamepadBinding
 import com.bammellab.gamepadtest.gamepad.BluetoothData
+import com.bammellab.gamepadtest.gamepad.LocalBroadcastReceiver
 
-
-class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observer<Int> */ {
+class GamepadFragment : Fragment(),
+        InputManager.InputDeviceListener,
+        LocalBroadcastReceiver.Callback {
 
     private lateinit var gamepadViewModel: GamepadViewModel
     private lateinit var binding: FragmentGamepadBinding
@@ -224,8 +228,17 @@ class GamepadFragment : Fragment(),  InputManager.InputDeviceListener /*, Observ
             else -> "${devList.size} controllers found"
         }
         if (!enabled) {
-            statusString += "\nBluetooth is not turned on"
+            binding.bluetoothStatus.text =  "Bluetooth is not turned on"
         }
         binding.inputDeviceStatus.text = statusString
+    }
+
+    override fun updateBluetoothStatus(state: Int) {
+        when (state) {
+            BluetoothAdapter.STATE_OFF -> binding.bluetoothStatus.text =  "Bluetooth is off"
+            BluetoothAdapter.STATE_TURNING_OFF -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
+            BluetoothAdapter.STATE_ON -> binding.bluetoothStatus.text =  "Bluetooth is on"
+            BluetoothAdapter.STATE_TURNING_ON -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
+        }
     }
 }

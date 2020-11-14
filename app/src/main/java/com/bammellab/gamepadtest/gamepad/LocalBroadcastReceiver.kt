@@ -1,6 +1,6 @@
 @file:Suppress("MoveVariableDeclarationIntoWhen")
 
-package com.bammellab.gamepadtest.util
+package com.bammellab.gamepadtest.gamepad
 
 import android.bluetooth.BluetoothAdapter
 import android.content.BroadcastReceiver
@@ -15,7 +15,7 @@ private const val TAG = "Bluetooth"
  *
  * @link: https://developer.android.com/guide/components/broadcasts
  */
-class MyBroadcastReceiver : BroadcastReceiver() {
+class LocalBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val action: String? = intent.action
@@ -39,4 +39,15 @@ class MyBroadcastReceiver : BroadcastReceiver() {
             }
         }
     }
+
+
+    fun setCallback(callbackIn: Callback) {
+        callback = callbackIn
+    }
+
+    interface Callback {
+        fun updateBluetoothStatus(state: Int)
+    }
+
+    private var callback: Callback? = null
 }

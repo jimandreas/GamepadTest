@@ -3,11 +3,8 @@
 package com.bammellab.gamepadtest
 
 import android.bluetooth.BluetoothAdapter
-import android.content.BroadcastReceiver
-import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
@@ -25,7 +22,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bammellab.gamepadtest.gamepad.GamepadServices
-import com.bammellab.gamepadtest.util.MyBroadcastReceiver
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -105,10 +101,8 @@ class MainActivity :
             Log.e("MainActivity", "Fail on StrictMode setup")
         }
 
-        val br: BroadcastReceiver = MyBroadcastReceiver()
-
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
-        registerReceiver(br, filter)
+        registerReceiver(GamepadServices.broadcastReceiver, filter)
 
     }
 

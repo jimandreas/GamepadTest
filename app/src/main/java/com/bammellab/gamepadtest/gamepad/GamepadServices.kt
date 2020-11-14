@@ -6,4 +6,5 @@ object GamepadServices {
     val gamepadButtonService = GamepadButton()
     val keycodes = KeycodeNumToString()
     val gamepadLoggerService = GamepadLogger()
+    val broadcastReceiver = LocalBroadcastReceiver()
 }

@@ -16,6 +16,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="GamepadStyle" parent="Theme.GamepadTest">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
 
     <style name="HidrohTextStyle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
@@ -31,7 +37,7 @@
     </style>
 
     // hat tip to:  http://stackoverflow.com/a/31014417/3853712
-    <style name="MyCardViewStyle" parent="AppTheme">
+    <style name="MyCardViewStyle" parent="Theme.GamepadTest">
         <!-- Card background color -->
         <item name="cardBackgroundColor">@android:color/darker_gray</item>
         <!-- Ripple for API 21 of android, and regular selector on older -->
