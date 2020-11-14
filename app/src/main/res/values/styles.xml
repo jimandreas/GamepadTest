@@ -15,13 +15,23 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="GamepadStyle" parent="Theme.GamepadTest">
+<!--
+    <style name="GamepadStyle" parent="Theme.GamepadTest">-->
+<!--    <style name="GamepadStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">@dimen/zero_dip_padding</item>
+        <item name="android:paddingTop">@dimen/zero_dip_padding</item>
+        <item name="android:paddingEnd">@dimen/zero_dip_padding</item>
+        <item name="android:paddingBottom">@dimen/zero_dip_padding</item>
 
+    </style>-->
+
+    <style name="RoundButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/shape_round_rect</item>
     </style>
+
 
     <style name="HidrohTextStyle">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
@@ -48,6 +58,10 @@
         <item name="cardCornerRadius">20dp</item>
         <item name="android:clickable">true</item>
         <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="BlueAccent" parent="Theme.GamepadTest">
+        <item name="colorAccent">@color/blue</item>
     </style>
 
 </resources>

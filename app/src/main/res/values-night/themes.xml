@@ -18,4 +18,17 @@
     <style name="Theme.GamepadTest.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     </style>
 
+
+    <style name="GamepadStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">@dimen/zero_dip_padding</item>
+        <item name="android:paddingTop">@dimen/zero_dip_padding</item>
+        <item name="android:paddingEnd">@dimen/zero_dip_padding</item>
+        <item name="android:paddingBottom">@dimen/zero_dip_padding</item>
+
+    </style>
+
+
 </resources>

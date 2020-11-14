@@ -8,7 +8,8 @@
 
 
     <dimen name="separator">1dp</dimen>
-    <dimen name="one_dip_padding">8dp</dimen>
+    <dimen name="zero_dip_padding">0dp</dimen>
+    <dimen name="one_dip_padding">1dp</dimen>
     <dimen name="default_padding">8dp</dimen>
     <dimen name="higher_padding">16dp</dimen>
     <dimen name="very_big_padding">80dp</dimen>

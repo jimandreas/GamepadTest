@@ -16,7 +16,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/GamepadStyle"
         tools:context=".ui.gamepad.GamepadFragment">
 
 
@@ -52,50 +51,49 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/rTrigger"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:background="@drawable/button_bg_oval_blue"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
+            style="@style/GamepadStyle"
 
             android:text="@string/rt"
             app:layout_constraintStart_toEndOf="@+id/rBumper"
             app:layout_constraintTop_toTopOf="@+id/rBumper" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/lTrigger"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:background="@drawable/button_bg_oval_blue"
-            android:paddingTop="0dp"
+            style="@style/GamepadStyle"
             android:text="@string/lt"
 
             app:layout_constraintEnd_toStartOf="@+id/lBumper"
             app:layout_constraintTop_toTopOf="@+id/lBumper" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/rBumper"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="110dp"
             android:background="@drawable/button_bg_oval_blue"
-            android:paddingTop="0dp"
+            style="@style/GamepadStyle"
             android:text="@string/rb"
 
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/lBumper"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginStart="120dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_bg_oval_blue"
-            android:paddingTop="0dp"
+            style="@style/GamepadStyle"
             android:text="@string/lb"
 
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -148,63 +146,55 @@
             app:layout_constraintStart_toStartOf="@+id/dpadCenter"
             app:layout_constraintTop_toBottomOf="@+id/dpadCenter" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/yButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="72dp"
             android:background="@drawable/button_bg_round_blue"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="0dp"
-            android:paddingBottom="0dp"
-            android:text="@string/yButton"
 
+            style="@style/GamepadStyle"
+            android:text="@string/yButton"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/rTrigger" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/xButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            style="@style/GamepadStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+
             android:background="@drawable/button_bg_round_blue"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="0dp"
-            android:paddingBottom="0dp"
+
             android:text="@string/xButton"
-
             app:layout_constraintEnd_toStartOf="@+id/yButton"
-            app:layout_constraintTop_toBottomOf="@+id/yButton" />
+            app:layout_constraintTop_toTopOf="@+id/yButton" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/aButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            style="@style/GamepadStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/button_bg_round_blue"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="0dp"
-            android:paddingBottom="0dp"
+
             android:text="@string/aButton"
-
             app:layout_constraintEnd_toStartOf="@+id/bButton"
-            app:layout_constraintTop_toBottomOf="@+id/bButton" />
+            app:layout_constraintTop_toTopOf="@+id/bButton" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            style="@style/GamepadStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/button_bg_round_blue"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="0dp"
-            android:paddingBottom="0dp"
-            android:text="@string/bButton"
 
+            android:text="@string/bButton"
             app:layout_constraintStart_toEndOf="@+id/yButton"
-            app:layout_constraintTop_toBottomOf="@+id/yButton" />
+            app:layout_constraintTop_toTopOf="@+id/yButton" />
 
         <ImageView
             android:id="@+id/start_button"
@@ -249,7 +239,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.37"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/input_device_status"
             tools:text="Bluetooth status goes here" />
