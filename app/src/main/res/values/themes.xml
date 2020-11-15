@@ -9,21 +9,13 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-
     </style>
 
     <style name="Theme.GamepadTest.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     </style>
 
-    <style name="GamepadStyle">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:paddingStart">@dimen/zero_dip_padding</item>
-        <item name="android:paddingTop">@dimen/zero_dip_padding</item>
-        <item name="android:paddingEnd">@dimen/zero_dip_padding</item>
-        <item name="android:paddingBottom">@dimen/one_dip_padding</item>
-
+    <style name="BlueAccent" parent="Theme.GamepadTest">
+        <item name="colorAccent">@color/blue</item>
     </style>
 
 </resources>
