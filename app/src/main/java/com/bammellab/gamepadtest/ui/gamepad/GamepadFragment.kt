@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bammellab.gamepadtest.R
 import com.bammellab.gamepadtest.databinding.FragmentGamepadBinding
 import com.bammellab.gamepadtest.gamepad.BluetoothData
+import com.bammellab.gamepadtest.gamepad.GamepadServices
 import com.bammellab.gamepadtest.gamepad.LocalBroadcastReceiver
 
 class GamepadFragment : Fragment(),
@@ -55,6 +56,7 @@ class GamepadFragment : Fragment(),
         binding.lifecycleOwner = this
         contextLocal = binding.root.context
         bluetoothData = BluetoothData(contextLocal)
+        GamepadServices.broadcastReceiver.setCallback(this)
 
         gamepadViewModel =
             ViewModelProvider(this).get(GamepadViewModel::class.java)
@@ -227,8 +229,10 @@ class GamepadFragment : Fragment(),
             1 -> "1 controller found"
             else -> "${devList.size} controllers found"
         }
-        if (!enabled) {
-            binding.bluetoothStatus.text =  "Bluetooth is not turned on"
+        binding.bluetoothStatus.text = if (enabled) {
+            "Bluetooth is on"
+        } else {
+            "Bluetooth is off"
         }
         binding.inputDeviceStatus.text = statusString
     }
@@ -236,9 +240,9 @@ class GamepadFragment : Fragment(),
     override fun updateBluetoothStatus(state: Int) {
         when (state) {
             BluetoothAdapter.STATE_OFF -> binding.bluetoothStatus.text =  "Bluetooth is off"
-            BluetoothAdapter.STATE_TURNING_OFF -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
+            //BluetoothAdapter.STATE_TURNING_OFF -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
             BluetoothAdapter.STATE_ON -> binding.bluetoothStatus.text =  "Bluetooth is on"
-            BluetoothAdapter.STATE_TURNING_ON -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
+            //BluetoothAdapter.STATE_TURNING_ON -> binding.bluetoothStatus.text =  "Bluetooth is turning on"
         }
     }
 }

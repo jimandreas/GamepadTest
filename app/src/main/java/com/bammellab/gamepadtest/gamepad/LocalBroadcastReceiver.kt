@@ -37,17 +37,18 @@ class LocalBroadcastReceiver : BroadcastReceiver() {
                 BluetoothAdapter.STATE_ON -> Log.i(TAG, "on")
                 BluetoothAdapter.STATE_TURNING_ON -> Log.i(TAG, "turning on")
             }
+            callbackList.forEach { it.updateBluetoothStatus(state) }
         }
     }
 
 
     fun setCallback(callbackIn: Callback) {
-        callback = callbackIn
+        callbackList.add(callbackIn)
     }
 
     interface Callback {
         fun updateBluetoothStatus(state: Int)
     }
 
-    private var callback: Callback? = null
+    private var callbackList = mutableListOf<Callback>()
 }

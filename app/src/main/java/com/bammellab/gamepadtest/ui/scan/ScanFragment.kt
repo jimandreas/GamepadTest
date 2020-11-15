@@ -7,6 +7,7 @@ import android.hardware.input.InputManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,10 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bammellab.gamepadtest.databinding.FragmentScanBinding
 import com.bammellab.gamepadtest.gamepad.BluetoothData
+import com.bammellab.gamepadtest.gamepad.GamepadServices
+import com.bammellab.gamepadtest.gamepad.LocalBroadcastReceiver
 import com.bammellab.gamepadtest.gamepad.SourceDataToString
 
 
-class ScanFragment : Fragment(), InputManager.InputDeviceListener {
+class ScanFragment :
+    Fragment(), InputManager.InputDeviceListener, LocalBroadcastReceiver.Callback {
 
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var binding: FragmentScanBinding
@@ -30,6 +34,7 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
     private lateinit var theRecyclerView: RecyclerView
     private lateinit var scanDeviceAdapter: ScanDeviceAdapter
     private lateinit var contextLocal: Context
+    private var scanner : BluetoothData? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +45,7 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
         binding = FragmentScanBinding.inflate(inflater)
         binding.lifecycleOwner = this
         contextLocal = binding.root.context
+        GamepadServices.broadcastReceiver.setCallback(this)
 
         scanViewModel =
             ViewModelProvider(this).get(ScanViewModel::class.java)
@@ -72,6 +78,8 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
         theRecyclerView.adapter = scanDeviceAdapter
         updateDeviceStringArray()
 
+        scanner = BluetoothData(binding.root.context)
+
         return binding.root
     }
 
@@ -85,10 +93,15 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
     }
 
     private fun updateDeviceStringArray() {
-        val scanner = BluetoothData(binding.root.context)
-        val deviceArray = scanner.assembleDescriptionStrings()
-        scanViewModel.updateDevStringArray(deviceArray)
-        scanDeviceAdapter.notifyDataSetChanged()
+        if (scanner != null) {
+            try {
+                val deviceArray = scanner!!.assembleDescriptionStrings()
+                scanViewModel.updateDevStringArray(deviceArray)
+                scanDeviceAdapter.notifyDataSetChanged()
+            } catch (e: Exception) {
+                Log.e("ScanFragment", "Exception in Bluetooth scanning")
+            }
+        }
     }
 
     override fun onInputDeviceAdded(deviceId: Int) {
@@ -100,6 +113,10 @@ class ScanFragment : Fragment(), InputManager.InputDeviceListener {
     }
 
     override fun onInputDeviceChanged(deviceId: Int) {
+        updateDeviceStringArray()
+    }
+
+    override fun updateBluetoothStatus(state: Int) {
         updateDeviceStringArray()
     }
 }

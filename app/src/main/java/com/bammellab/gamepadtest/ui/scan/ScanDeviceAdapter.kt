@@ -26,7 +26,7 @@ class ScanDeviceAdapter(
 
         val deviceInfoText = view.findViewById<View>(R.id.recycler_device_info_text) as TextView
         override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+            // not implemented
         }
     }
 

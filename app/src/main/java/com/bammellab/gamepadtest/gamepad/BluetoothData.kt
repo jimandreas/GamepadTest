@@ -146,8 +146,10 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
         val descList = mutableListOf<String>()
         val deviceArray = scanList()
         var overviewString = "Input Controllers connected: ${deviceArray.size}"
-        if (!isBluetoothEnabled()) {
-            overviewString += "\nBluetooth is not turned on"
+        if (isBluetoothEnabled()) {
+            overviewString += "\nBluetooth is on"
+        } else {
+            overviewString += "\nBluetooth is off"
         }
         descList.add(overviewString)
         if (deviceArray.size > 0) {
