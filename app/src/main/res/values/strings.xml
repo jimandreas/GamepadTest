@@ -86,5 +86,29 @@
     <string name="funky">FUNKY CONTROLLER</string>
 
 
+    <string name="prefs_theme">Theme</string>
+    <string name="prefs_theme_key">theme_key</string>
+
+    <string name="prefs_theme_default_value">dark</string>
+    <string name="prefs_theme_dialog_title">Choose theme</string>
+    <string name="prefs_theme_summary">CURRENT SETTING GOES HERE</string>
+    <string name="prefs_theme_title">Choose theme</string>
+
+
+    <array name="theme_array_entries">
+        <item>Dark</item>
+        <item>Light</item>
+        <item>Set by Battery Saver</item>
+        <item>System Default</item>
+    </array>
+
+    <array name="theme_array_entry_values">
+        <item>dark</item>
+        <item>light</item>
+        <item>battery</item>
+        <item>system</item>
+    </array>
+
+
 
 </resources>
