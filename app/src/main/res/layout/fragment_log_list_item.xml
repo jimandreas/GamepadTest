@@ -16,6 +16,8 @@
 
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
+        android:paddingStart="@dimen/one_dip_padding"
+        android:paddingEnd="@dimen/one_dip_padding"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:fontFamily="monospace"

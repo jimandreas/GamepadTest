@@ -22,6 +22,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bammellab.gamepadtest.gamepad.GamepadServices
+import com.bammellab.gamepadtest.ui.settings.SettingsFragment.Companion.bashTheTheme
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -74,6 +75,7 @@ class MainActivity :
         // Listen for preference changes
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         prefs.registerOnSharedPreferenceChangeListener(this)
+        bashTheTheme(prefs, resources)
 
         /*
          * this is added as suggested here:
@@ -103,7 +105,6 @@ class MainActivity :
 
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
         registerReceiver(GamepadServices.broadcastReceiver, filter)
-
     }
 
     /**

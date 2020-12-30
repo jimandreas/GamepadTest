@@ -68,9 +68,9 @@ class GamepadJoysticks {
                 val logString = StringBuilder()
                     .append("STICK:")
                     .append("Lx", String.format("%+5.2f", leftX))
-                    .append(" Ly", String.format("%+5.2f", leftY))
+                    .append(" y", String.format("%+5.2f", leftY))
                     .append(" Rx", String.format("%+5.2f", rightX))
-                    .append(" Ry", String.format("%+5.2f", rightY))
+                    .append(" y", String.format("%+5.2f", rightY))
                     .toString()
 
                 logActivity(  logString)
