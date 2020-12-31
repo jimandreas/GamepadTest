@@ -6,7 +6,7 @@ import com.bammellab.gamepadtest.util.PrefsUtil
 
 class MainApplication : Application() {
 
-    lateinit var appContext : Context
+    private lateinit var appContext : Context
 
     override fun onCreate() {
         super.onCreate()

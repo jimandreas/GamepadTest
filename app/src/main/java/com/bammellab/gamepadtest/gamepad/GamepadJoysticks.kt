@@ -3,9 +3,7 @@
 package com.bammellab.gamepadtest.gamepad
 
 import android.app.Activity
-import android.text.Html
 import android.text.Spanned
-import android.text.TextUtils
 import android.util.Log
 import android.view.MotionEvent
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY

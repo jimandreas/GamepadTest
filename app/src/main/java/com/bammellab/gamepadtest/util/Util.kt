@@ -3,13 +3,7 @@ package com.bammellab.gamepadtest.util
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.text.Annotation
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannedString
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
-import com.bammellab.gamepadtest.R
 import com.google.android.material.snackbar.Snackbar
 
 object Util {

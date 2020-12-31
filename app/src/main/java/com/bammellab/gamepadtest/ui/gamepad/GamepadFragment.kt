@@ -3,7 +3,6 @@
 package com.bammellab.gamepadtest.ui.gamepad
 
 import android.bluetooth.BluetoothAdapter
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -51,7 +50,7 @@ class GamepadFragment : Fragment(),
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentGamepadBinding.inflate(inflater)
         binding.lifecycleOwner = this
         contextLocal = binding.root.context
@@ -224,7 +223,7 @@ class GamepadFragment : Fragment(),
 
         val devList = bluetoothData.scanList()
         val enabled = bluetoothData.isBluetoothEnabled()
-        var statusString = when (devList.size) {
+        val statusString = when (devList.size) {
             0 -> "No controllers found"
             1 -> "1 controller found"
             else -> "${devList.size} controllers found"

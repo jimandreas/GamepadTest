@@ -6,8 +6,6 @@ import android.bluetooth.BluetoothAdapter
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.VmPolicy
 import android.util.Log
 import android.view.InputDevice
 import android.view.KeyEvent
@@ -82,7 +80,7 @@ class MainActivity :
          * https://stackoverflow.com/a/57772287
          * to try to track down strict mode Google Play reporting.
          */
-        try {
+        /*try {
             if (BuildConfig.BUILD_TYPE.contentEquals("debug")) {
                 StrictMode.setThreadPolicy(
                     StrictMode.ThreadPolicy.Builder()
@@ -101,7 +99,7 @@ class MainActivity :
             }
         } catch (e: Exception) {
             Log.e("MainActivity", "Fail on StrictMode setup")
-        }
+        }*/
 
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
         registerReceiver(GamepadServices.broadcastReceiver, filter)

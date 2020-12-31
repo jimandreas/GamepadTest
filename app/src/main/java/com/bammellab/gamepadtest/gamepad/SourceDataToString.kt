@@ -3,7 +3,7 @@ package com.bammellab.gamepadtest.gamepad
 import android.view.InputDevice.*
 
 class SourceDataToString {
-    val sourceToStringMap = HashMap<Int, String>()
+    private val sourceToStringMap = HashMap<Int, String>()
 
     init {
 

@@ -29,7 +29,7 @@ class LogFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentLogBinding.inflate(inflater)
         binding.lifecycleOwner = this

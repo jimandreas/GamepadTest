@@ -1,3 +1,5 @@
+@file:Suppress("MoveVariableDeclarationIntoWhen")
+
 package com.bammellab.gamepadtest.ui.settings
 
 import android.content.SharedPreferences

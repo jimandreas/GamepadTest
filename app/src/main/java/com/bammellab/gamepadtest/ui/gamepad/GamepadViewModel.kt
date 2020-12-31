@@ -2,7 +2,6 @@
 
 package com.bammellab.gamepadtest.ui.gamepad
 
-import android.util.Log
 import android.view.KeyEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

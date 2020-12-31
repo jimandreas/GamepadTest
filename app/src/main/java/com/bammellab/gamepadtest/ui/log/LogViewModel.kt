@@ -1,7 +1,6 @@
 package com.bammellab.gamepadtest.ui.log
 
 import android.text.Spanned
-import androidx.core.text.HtmlCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -2,12 +2,10 @@
 
 package com.bammellab.gamepadtest.gamepad
 
-import android.content.Context
 import android.text.Spanned
 import android.text.SpannedString
 import android.util.Log
 import androidx.core.text.toSpannable
-import com.bammellab.gamepadtest.MainApplication
 import com.bammellab.gamepadtest.R
 import com.bammellab.gamepadtest.util.PrefsUtil
 

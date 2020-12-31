@@ -21,8 +21,6 @@
 
     // hat tip to:  http://stackoverflow.com/a/31014417/3853712
     <style name="MyCardViewStyle" parent="Theme.GamepadTest">
-        <!-- Card background color -->
-        <item name="cardBackgroundColor">@android:color/darker_gray</item>
         <!-- Ripple for API 21 of android, and regular selector on older -->
         <item name="android:foreground">?android:selectableItemBackground</item>
         <!-- Resting Elevation from Material guidelines -->

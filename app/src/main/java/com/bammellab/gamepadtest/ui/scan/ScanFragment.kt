@@ -40,7 +40,7 @@ class ScanFragment :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentScanBinding.inflate(inflater)
         binding.lifecycleOwner = this
