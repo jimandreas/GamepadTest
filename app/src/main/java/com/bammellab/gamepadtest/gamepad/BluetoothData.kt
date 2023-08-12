@@ -122,7 +122,7 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
         for (i in idArray) {
             if (i > 0) {
 
-                val dev = inputManager.getInputDevice(i)
+                val dev = inputManager.getInputDevice(i) ?: return(devArray)
 
                 if (dev.controllerNumber > 0) {
                     val entry = DeviceInfo()
