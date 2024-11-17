@@ -40,7 +40,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity :
-    AppCompatActivity(), LifecycleObserver, SharedPreferences.OnSharedPreferenceChangeListener  {
+    AppCompatActivity(),
+    LifecycleObserver,
+    SharedPreferences.OnSharedPreferenceChangeListener  {
 
     private lateinit var navView: BottomNavigationView
 

@@ -1,0 +1,23 @@
+[versions]
+agp = "8.6.1"
+kotlin = "1.9.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+jupiter = "5.11.0"
+androidxFragment = "1.8.3"
+androidxFragmentKtx = "1.8.3"
+
+[libraries]
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "androidxFragment" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "jupiter" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "androidxFragmentKtx" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
