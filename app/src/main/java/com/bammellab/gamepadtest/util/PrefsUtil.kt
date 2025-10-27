@@ -15,7 +15,7 @@
 
 
 
-@file:Suppress("UnnecessaryVariable")
+@file:Suppress("UnnecessaryVariable", "unused")
 
 package com.bammellab.gamepadtest.util
 

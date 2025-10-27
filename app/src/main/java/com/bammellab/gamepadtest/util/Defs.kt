@@ -13,6 +13,8 @@
  *
  */
 
+@file:Suppress("unused")
+
 package com.bammellab.gamepadtest.util
 
 import android.os.Build

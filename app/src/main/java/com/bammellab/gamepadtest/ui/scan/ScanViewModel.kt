@@ -13,6 +13,8 @@
  *
  */
 
+@file:Suppress("EmptyMethod")
+
 package com.bammellab.gamepadtest.ui.scan
 
 import androidx.lifecycle.LiveData
@@ -37,5 +39,3 @@ class ScanViewModel : ViewModel() {
 
     }
 }
-
-

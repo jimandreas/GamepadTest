@@ -16,7 +16,7 @@
 
 <!--Hack for "match_parent" dimension-->
 <!--https://stackoverflow.com/a/37971851-->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <item name="custom_match_parent" type="dimen">-1</item>
-    <item name="custom_wrap_content" type="dimen">-2</item>
+    <item name="custom_wrap_content" type="dimen" tools:ignore="UnusedResources">-2</item>
 </resources>

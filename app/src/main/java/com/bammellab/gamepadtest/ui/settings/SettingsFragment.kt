@@ -39,7 +39,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         savedResources = resources
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        val context = preferenceScreen.context
+        //val context = preferenceScreen.context
 
         themePreferenceHandler()
 
@@ -70,7 +70,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
             }
             themePreference?.entries = entries.toTypedArray()
             themePreference?.entryValues = entryValues.toTypedArray()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Log.e("Theme", "Something bad happened in themePreferenceHandler")
         }
     }
@@ -115,7 +115,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         }
                     }
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 Log.e("Theme",  "Something bad happened in bashTheTheme")
             }
         }

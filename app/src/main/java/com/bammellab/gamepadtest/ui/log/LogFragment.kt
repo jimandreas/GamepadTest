@@ -17,6 +17,7 @@
 
 package com.bammellab.gamepadtest.ui.log
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,6 +41,7 @@ class LogFragment : Fragment() {
     private lateinit var logAdapter: LogAdapter
     private lateinit var contextLocal: Context
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,7 +78,7 @@ class LogFragment : Fragment() {
         theRecyclerView.adapter = logAdapter
 
         logViewModel.logInfoStringArray.observe(viewLifecycleOwner, {
-            val stringList = it
+            //val stringList = it
             logAdapter.notifyDataSetChanged()
         })
 
@@ -92,10 +94,7 @@ class LogFragment : Fragment() {
      *
      * @link: https://developer.android.com/guide/topics/connectivity/bluetooth?hl=en
      */
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // updateDeviceStringArray()
     }
-
-
 }

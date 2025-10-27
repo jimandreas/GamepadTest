@@ -13,7 +13,7 @@
  *
  */
 
-@file:Suppress("UnnecessaryVariable", "JoinDeclarationAndAssignment")
+@file:Suppress("UnnecessaryVariable", "JoinDeclarationAndAssignment", "unused")
 
 package com.bammellab.gamepadtest.ui.scan
 

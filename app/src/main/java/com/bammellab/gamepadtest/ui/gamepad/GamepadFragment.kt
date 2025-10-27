@@ -17,6 +17,7 @@
 
 package com.bammellab.gamepadtest.ui.gamepad
 
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.graphics.Color
@@ -251,6 +252,7 @@ class GamepadFragment : Fragment(),
         binding.inputDeviceStatus.text = statusString
     }
 
+    @SuppressLint("SetTextI18n")
     override fun updateBluetoothStatus(state: Int) {
         when (state) {
             BluetoothAdapter.STATE_OFF -> binding.bluetoothStatus.text =  "Bluetooth is off"

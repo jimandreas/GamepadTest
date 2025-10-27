@@ -13,6 +13,8 @@
  *
  */
 
+@file:Suppress("unused")
+
 package com.bammellab.gamepadtest.gamepad
 
 import android.view.KeyEvent

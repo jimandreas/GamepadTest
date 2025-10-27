@@ -17,6 +17,7 @@
 
 package com.bammellab.gamepadtest.gamepad
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.text.Spanned
 import android.util.Log
@@ -51,6 +52,7 @@ class GamepadJoysticks {
 
     val logger = GamepadServices.gamepadLoggerService
 
+    @SuppressLint("DefaultLocale")
     fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
         val logMotionEventsKey = activityIn.getString(R.string.settings_log_motion_key)
