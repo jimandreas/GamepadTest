@@ -1,5 +1,9 @@
 # GamepadTest
 
+Currently updating to this Android Studio version.  Some clean up still needed.
+
+<b> Android Studio Narwhal 4 Feature Drop | 2025.1.4</b>
+
 Repository link on Github:  https://github.com/bammellab/GamepadTest
 
 Screenshot of application:
