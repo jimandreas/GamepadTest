@@ -19,7 +19,7 @@ jupiter = "6.0.0"
 kotlin = "2.2.21"
 lifecycle = "2.9.4"
 navigation = "2.9.5"
-timber = "5.0.1"
+#timber = "5.0.1"
 
 
 [libraries]
@@ -42,7 +42,7 @@ jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "androidxFragmentKtx" }
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+#timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
