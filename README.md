@@ -11,7 +11,7 @@ buttons, and Dpad visually.
 
 The app was developed and tested so far with the TRUST GXT 590 Gamepad:
 
-<img src="docs/img/Gamepad-TRUST-GXT-590.PNG" width = 200>
+<img src="docs/img/Gamepad-TRUST-GXT-590.PNG" width = 200 alt="none">
 
 https://www.trust.com/en/product/22258-gxt-590-bosi-bluetooth-wireless-gamepad
 
@@ -24,6 +24,20 @@ connecting via BlueTooth to my Xperia phone as a regular device and as an "Input
 It MUST be in the "Input Device" mode to work as a GamePad.  So I toggle it by reconnecting.
 Sometimes I have to make the Bluetooth system forget the device and do another Pair operation
 before things get back to "toggle" mode.   Basically pretty bad for reliability.
+
+### Other notes
+
+The BuildConfig structure is required and is turned on in the build.gradle.kts gradle file, as follows
+
+    android {
+    // ...
+    
+        buildFeatures {
+            buildConfig = true
+        }
+    }
+
+A nice thank you to this SO author: https://stackoverflow.com/a/79801435/3853712
 
 ### Compatibility
 
