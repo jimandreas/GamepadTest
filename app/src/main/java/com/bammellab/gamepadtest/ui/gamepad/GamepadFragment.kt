@@ -74,7 +74,7 @@ class GamepadFragment : Fragment(),
         GamepadServices.broadcastReceiver.setCallback(this)
 
         gamepadViewModel =
-            ViewModelProvider(this).get(GamepadViewModel::class.java)
+            ViewModelProvider(this)[GamepadViewModel::class.java]
         binding.viewModel = gamepadViewModel
 
         val im = contextLocal.getSystemService(

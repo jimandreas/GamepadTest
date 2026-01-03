@@ -111,6 +111,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         if (TEN_Q_GOOD_BUDDY) {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                         } else {
+                            @Suppress("DEPRECATION")
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
                         }
                     }

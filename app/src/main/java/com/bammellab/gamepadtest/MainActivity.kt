@@ -20,6 +20,7 @@ package com.bammellab.gamepadtest
 import android.bluetooth.BluetoothAdapter
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.InputDevice
@@ -119,7 +120,11 @@ class MainActivity :
         }*/
 
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
-        registerReceiver(GamepadServices.broadcastReceiver, filter)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(GamepadServices.broadcastReceiver, filter, RECEIVER_EXPORTED)
+        } else {
+            registerReceiver(GamepadServices.broadcastReceiver, filter)
+        }
     }
 
     /**
@@ -198,6 +203,7 @@ class MainActivity :
     override fun onDestroy() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        unregisterReceiver(GamepadServices.broadcastReceiver)
         super.onDestroy()
     }
 
