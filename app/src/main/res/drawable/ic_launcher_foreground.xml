@@ -38,13 +38,6 @@
             C84,68 86,63 87,58
             C88,53 87,48 85,44
             C83,40 80,38 76,38
-            L67,38
-            C64,38 62,40 60,43
-            L58,46
-            C57,47 56,48 54,48
-            C52,48 51,47 50,46
-            L48,43
-            C46,40 44,38 41,38
             L32,38 Z"
         android:strokeWidth="1.2"
         android:strokeColor="#000000" />
@@ -57,7 +50,7 @@
     <!-- Right joystick -->
     <path
         android:fillColor="#020202"
-        android:pathData="M72,57 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:pathData="M74,60 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
         android:strokeWidth="0.8"
         android:strokeColor="#000000" />
     <!-- D-pad -->
