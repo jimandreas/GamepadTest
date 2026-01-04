@@ -108,6 +108,7 @@
     <string name="prefs_theme_dialog_title">Choose theme</string>
     <string name="prefs_theme_summary">CURRENT SETTING GOES HERE</string>
     <string name="prefs_theme_title">Choose theme</string>
+    <string name="settingsString">Settings</string>
 
 
     <array name="theme_array_entries">

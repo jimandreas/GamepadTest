@@ -65,7 +65,7 @@ class ScanFragment :
         GamepadServices.broadcastReceiver.setCallback(this)
 
         scanViewModel =
-            ViewModelProvider(this).get(ScanViewModel::class.java)
+            ViewModelProvider(this)[ScanViewModel::class.java]
         binding.viewModel = scanViewModel
         bcontext = binding.root.context
 

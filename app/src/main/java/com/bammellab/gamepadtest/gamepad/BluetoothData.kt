@@ -6,6 +6,7 @@ package com.bammellab.gamepadtest.gamepad
 
 import android.bluetooth.*
 import android.content.Context
+import android.content.Context.BLUETOOTH_SERVICE
 import android.hardware.input.InputManager
 import android.os.Handler
 import android.os.Looper
@@ -32,7 +33,7 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
             Context.INPUT_SERVICE
         ) as InputManager
         im.registerInputDeviceListener(this, Handler(Looper.getMainLooper()))
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        bluetoothAdapter = (contextLocal.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
 
 
         /*
@@ -79,7 +80,7 @@ class BluetoothData(contextIn: Context) : InputManager.InputDeviceListener {
         var bluetoothHeadset: BluetoothHeadset? = null
 
         // Get the default adapter
-        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        val bluetoothAdapter = (contextLocal.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
 
         val profileListener = object : BluetoothProfile.ServiceListener {
 

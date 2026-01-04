@@ -24,8 +24,6 @@ import android.util.Log
 import android.view.MotionEvent
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.core.text.HtmlCompat.fromHtml
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
 import com.bammellab.gamepadtest.R
 import kotlin.math.abs
@@ -166,18 +164,4 @@ class GamepadJoysticks {
 
         return 0f
     }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun startOfLifecycle() {
-        Log.i("GAMEPAD:", " on start")
-
-        // Note that the Thread the handler runs on is determined by a class called Looper.
-        // In this case, no looper is defined, and it defaults to the main or UI thread.
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun stopTimer() {
-        Log.i("GAMEPAD:", " on stop")
-    }
-
 }

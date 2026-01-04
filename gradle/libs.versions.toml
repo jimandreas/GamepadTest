@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.0"
+agp = "8.13.2"
 androidxFragment = "1.8.9"
 androidxFragmentKtx = "1.8.9"
 appcompat = "1.7.1"
