@@ -15,8 +15,11 @@ GamepadTest is an Android app that displays connected Bluetooth gamepad state (j
 # Build release APK
 ./gradlew assembleRelease
 
-# Run unit tests
+# Run all unit tests
 ./gradlew test
+
+# Run a specific test class
+./gradlew test --tests "com.bammellab.gamepadtest.ExampleTest"
 
 # Run instrumentation tests (requires device/emulator)
 ./gradlew connectedCheck
@@ -31,6 +34,7 @@ GamepadTest is an Android app that displays connected Bluetooth gamepad state (j
   - `GamepadJoysticks` - Joystick input processing
   - `GamepadButton` - Button input processing
   - `GamepadLogger` - Event logging
+  - `LocalBroadcastReceiver` - Bluetooth state change handling
 - **ui/** - Fragments with ViewModels using LiveData
   - `GamepadFragment/ViewModel` - Main gamepad visualization
   - `LogFragment/ViewModel` - Event log display
@@ -38,17 +42,20 @@ GamepadTest is an Android app that displays connected Bluetooth gamepad state (j
   - `SettingsFragment` - Preferences
 - **ui/customviews/JoystickView** - Custom joystick visualization component
 
-Navigation uses AndroidX Navigation with bottom nav bar (4 destinations).
+**Data flow:** MainActivity intercepts hardware input → GamepadServices singletons process events → ViewModels observe via LiveData → Fragments update UI.
+
+Navigation uses AndroidX Navigation with bottom nav bar (4 destinations defined in `navigation_mobile.xml`).
 
 ## Key Configuration
 
-- **Build:** Gradle Kotlin DSL, AGP 8.13.0, Kotlin 2.2.21
+- **Build:** Gradle Kotlin DSL, AGP 8.13.2, Kotlin 2.2.21
 - **Dependencies:** Version catalog at `gradle/libs.versions.toml`
-- **Build features:** View binding and data binding enabled
+- **Build features:** View binding, data binding, and BuildConfig enabled
 - **Code style:** `kotlin.code.style=official` (gradle.properties)
+- **Test framework:** JUnit 5 (Jupiter) configured via `useJUnitPlatform()`
 
 ## Known Issues
 
-- Bluetooth connection toggles between regular device and "Input Device" modes
-- Rumble/vibration not available (Android limitation)
+- Bluetooth connection toggles between regular device and "Input Device" modes (must be in Input Device mode to work)
+- Rumble/vibration not available (Android limitation - see [issuetracker.google.com/issues/128314303](https://issuetracker.google.com/issues/128314303))
 - Xbox controller keymapping varies across Android versions

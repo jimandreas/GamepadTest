@@ -19,6 +19,7 @@
     android:paddingBottom="60dp"
     android:paddingStart="@dimen/recycler_padding_start"
     android:paddingEnd="@dimen/default_padding"
+    android:contentDescription="@string/settingsString"
     android:scrollbars="vertical">
 
         <FrameLayout
