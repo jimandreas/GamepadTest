@@ -2,7 +2,7 @@
 
 <!--
   ~ /*
-  ~  * Copyright 2023 Bammellab / James Andreas
+  ~  * Copyright 2023-2025 Bammellab / James Andreas
   ~  * Licensed under the Apache License, Version 2.0 (the "License");
   ~  * you may not use this file except in compliance with the License.
   ~  * You may obtain a copy of the License at
@@ -50,8 +50,8 @@
             android:id="@+id/joystickLeft"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginStart="36dp"
             android:layout_marginTop="36dp"
+            android:layout_marginStart="36dp"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -61,8 +61,8 @@
             android:layout_height="75dp"
 
 
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -166,7 +166,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="67dp"
             android:background="@drawable/button_bg_round_blue"
 
             style="@style/GamepadStyle"
@@ -216,7 +216,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="12dp"
             app:layout_constraintEnd_toStartOf="@+id/xButton"
             app:layout_constraintTop_toBottomOf="@+id/rBumper"
             app:srcCompat="@drawable/ic_table_rows_black_24dp"
@@ -239,12 +239,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/bluetooth_status"
             app:layout_constraintStart_toStartOf="@+id/bluetooth_status"
-            app:layout_constraintTop_toBottomOf="@+id/dpadDown"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
             tools:text="Controller status goes here" />
 
         <TextView

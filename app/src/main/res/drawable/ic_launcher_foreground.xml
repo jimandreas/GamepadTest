@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /*
   ~  * Copyright 2023-2025 Bammellab / James Andreas
@@ -14,48 +15,48 @@
   -->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="150dp"
-    android:height="150dp"
-    android:viewportWidth="450"
-    android:viewportHeight="480">
-    <!-- Controller body -->
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Controller body - scaled to fit within round icon safe zone -->
     <path
         android:fillColor="#FF0000"
-        android:pathData="M80,50
-            C50,50 30,70 18,100
-            C6,130 2,175 8,220
-            C14,265 30,305 52,340
-            C74,375 100,395 130,387
-            C152,381 170,355 183,320
-            L195,268
-            C200,248 214,235 233,235
-            L250,235
-            C269,235 283,248 288,268
-            L300,320
-            C313,355 331,381 353,387
-            C383,395 409,375 431,340
-            C453,305 469,265 475,220
-            C481,175 477,130 465,100
-            C453,70 433,50 403,50
-            L80,50 Z"
-        android:strokeWidth="6"
+        android:pathData="M32,38
+            C28,38 25,40 23,44
+            C21,48 20,53 21,58
+            C22,63 24,68 27,72
+            C30,76 34,77 38,76
+            C41,75 44,72 45,68
+            L47,63
+            C48,61 49,59 52,59
+            L56,59
+            C59,59 60,61 61,63
+            L63,68
+            C64,72 67,75 70,76
+            C74,77 78,76 81,72
+            C84,68 86,63 87,58
+            C88,53 87,48 85,44
+            C83,40 80,38 76,38
+            L32,38 Z"
+        android:strokeWidth="1.2"
         android:strokeColor="#000000" />
     <!-- Left joystick -->
     <path
         android:fillColor="#020202"
-        android:pathData="M105,150 m-25,0 a25,25 0 1,0 50,0 a25,25 0 1,0 -50,0"
-        android:strokeWidth="4"
+        android:pathData="M36,48 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:strokeWidth="0.8"
         android:strokeColor="#000000" />
     <!-- Right joystick -->
     <path
         android:fillColor="#020202"
-        android:pathData="M390,260 m-25,0 a25,25 0 1,0 50,0 a25,25 0 1,0 -50,0"
-        android:strokeWidth="4"
+        android:pathData="M74,60 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:strokeWidth="0.8"
         android:strokeColor="#000000" />
     <!-- D-pad -->
     <path
         android:fillColor="#020202"
-        android:pathData="M80,240 L102,240 L102,218 L120,218 L120,240 L142,240 L142,258 L120,258 L120,280 L102,280 L102,258 L80,258 Z"
-        android:strokeWidth="3"
+        android:pathData="M32,57 L35,57 L35,54 L38,54 L38,57 L41,57 L41,60 L38,60 L38,63 L35,63 L35,60 L32,60 Z"
+        android:strokeWidth="0.6"
         android:strokeColor="#000000" />
 </vector>

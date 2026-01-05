@@ -1,15 +1,15 @@
 /*
  *
- *  * Copyright 2023 Bammellab / James Andreas
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *      http://www.apache.org/licenses/LICENSE-2.0
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License
+ * Copyright 2023-2025 Bammellab / James Andreas
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License
  *
  */
 
@@ -39,7 +39,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         savedResources = resources
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        val context = preferenceScreen.context
+        //val context = preferenceScreen.context
 
         themePreferenceHandler()
 
@@ -70,7 +70,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
             }
             themePreference?.entries = entries.toTypedArray()
             themePreference?.entryValues = entryValues.toTypedArray()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Log.e("Theme", "Something bad happened in themePreferenceHandler")
         }
     }
@@ -111,11 +111,12 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         if (TEN_Q_GOOD_BUDDY) {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                         } else {
+                            @Suppress("DEPRECATION")
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
                         }
                     }
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 Log.e("Theme",  "Something bad happened in bashTheTheme")
             }
         }

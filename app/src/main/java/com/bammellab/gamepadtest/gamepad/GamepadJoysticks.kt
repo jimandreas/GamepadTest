@@ -1,15 +1,15 @@
 /*
  *
- *  * Copyright 2023 Bammellab / James Andreas
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *      http://www.apache.org/licenses/LICENSE-2.0
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License
+ * Copyright 2023-2025 Bammellab / James Andreas
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License
  *
  */
 
@@ -17,14 +17,13 @@
 
 package com.bammellab.gamepadtest.gamepad
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.text.Spanned
 import android.util.Log
 import android.view.MotionEvent
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.core.text.HtmlCompat.fromHtml
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
 import com.bammellab.gamepadtest.R
 import kotlin.math.abs
@@ -51,6 +50,7 @@ class GamepadJoysticks {
 
     val logger = GamepadServices.gamepadLoggerService
 
+    @SuppressLint("DefaultLocale")
     fun processJoystickInput(activityIn: Activity, event: MotionEvent) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activityIn)
         val logMotionEventsKey = activityIn.getString(R.string.settings_log_motion_key)
@@ -164,18 +164,4 @@ class GamepadJoysticks {
 
         return 0f
     }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun startOfLifecycle() {
-        Log.i("GAMEPAD:", " on start")
-
-        // Note that the Thread the handler runs on is determined by a class called Looper.
-        // In this case, no looper is defined, and it defaults to the main or UI thread.
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun stopTimer() {
-        Log.i("GAMEPAD:", " on stop")
-    }
-
 }

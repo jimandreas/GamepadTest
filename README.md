@@ -1,5 +1,9 @@
 # GamepadTest
 
+Currently updating to this Android Studio version.  Some clean up still needed.
+
+<b> Android Studio Narwhal 4 Feature Drop | 2025.1.4</b>
+
 Repository link on Github:  https://github.com/bammellab/GamepadTest
 
 Screenshot of application:
@@ -11,7 +15,7 @@ buttons, and Dpad visually.
 
 The app was developed and tested so far with the TRUST GXT 590 Gamepad:
 
-<img src="docs/img/Gamepad-TRUST-GXT-590.PNG" width = 200>
+<img src="docs/img/Gamepad-TRUST-GXT-590.PNG" width = 200 alt="none">
 
 https://www.trust.com/en/product/22258-gxt-590-bosi-bluetooth-wireless-gamepad
 
@@ -24,6 +28,19 @@ connecting via BlueTooth to my Xperia phone as a regular device and as an "Input
 It MUST be in the "Input Device" mode to work as a GamePad.  So I toggle it by reconnecting.
 Sometimes I have to make the Bluetooth system forget the device and do another Pair operation
 before things get back to "toggle" mode.   Basically pretty bad for reliability.
+
+### Other notes
+
+The BuildConfig structure is required and is turned on in the build.gradle.kts gradle file, as follows
+
+    android {
+    // ...
+        buildFeatures {
+            buildConfig = true
+        }
+    }
+
+A nice thank you to this stack overflow author "Tyler V": https://stackoverflow.com/a/79801435/3853712
 
 ### Compatibility
 
@@ -42,12 +59,12 @@ One big feature that is missing is any control over vibration on the gamepads.
 They are only a source of input events.  No control over a gamepad is evident.
 
 [Feature Request] Support for rumble on controllers
-https://issuetracker.google.com/issues/161057609
+https://issuetracker.google.com/issues/128314303
 
 37115804 Add support for Xbox One S controller over Bluetooth
 https://issuetracker.google.com/issues/37115804
 
-[Android 11 DP/Beta] Bluetooth Gamepads Aren't Reported as Source of Input Events
+[Android 11 DP/Beta] Bluetooth Gamepads Aren't Reported as Source of Input Events (Flagged as fixed)
 https://issuetracker.google.com/issues/163120692
 
 [Android 11 Beta] XBox Controller (FLAGGED as WONT FIX)
