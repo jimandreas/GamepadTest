@@ -1,4 +1,10 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) load(file.inputStream())
+}
 
 plugins {
     alias(libs.plugins.android.application)
@@ -21,8 +27,18 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("C:/a/j/bammellab/keystoresBammellab.jks")
+            storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
+            keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
+            keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
