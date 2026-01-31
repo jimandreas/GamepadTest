@@ -21,8 +21,12 @@ android {
         applicationId = "com.bammellab.gamepadtest"
         minSdk = 24
         targetSdk = 36
-        versionCode = 202
-        versionName = "2.0.2"
+
+        // HIGHER than your current highest production code (1040130)
+        versionCode = 1050000
+
+        // The version string visible to users
+        versionName = "1.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
