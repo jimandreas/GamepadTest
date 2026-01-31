@@ -1,4 +1,10 @@
-     
+---
+title: "Update"
+weight: 40
+---
+
+# Update
+
 ## Claude Opus 4.5 updates to the code:
 
 ### UI gamepad outline update:

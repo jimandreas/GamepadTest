@@ -1,5 +1,9 @@
-# Technical details
+---
+title: "Technical Details"
+weight: 10
+---
 
+# Technical Details
 
 ## SVG design tools
 
