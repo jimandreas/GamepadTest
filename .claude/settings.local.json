@@ -12,7 +12,8 @@
       "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" status)",
       "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" diff --stat)",
       "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" log master..HEAD --oneline)",
-      "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" diff master..HEAD --stat)"
+      "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" diff master..HEAD --stat)",
+      "Bash(git -C \"C:\\\\a\\\\j\\\\active\\\\GamepadTest\" log -3 --oneline)"
     ]
   }
 }
