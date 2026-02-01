@@ -1,3 +1,8 @@
+---
+title: "Privacy Policy"
+weight: 30
+---
+
 # Privacy Policy
 
 Bammellab built the GamepadTest application ("app") as an open source app. This app is provided by Bammellab at no cost and is intended
@@ -10,7 +15,7 @@ The GamepadTest app does not collect any personal information whatsoever.  Deriv
 code of this app are at liberty to modify the functions of this app subject to the Terms and Conditions.
 
 The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions,
-    which is accessible at https://www.apache.org/licenses/LICENSE-2.0, unless otherwise defined in this Privacy Policy.</p>
+    which is accessible at https://www.apache.org/licenses/LICENSE-2.0, unless otherwise defined in this Privacy Policy.
 
 ## Changes to This Privacy Policy
 

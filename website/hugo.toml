@@ -1,0 +1,26 @@
+baseURL = 'https://bammellab.github.io/GamepadTest/'
+languageCode = 'en-us'
+title = 'Gamepad Test'
+theme = 'hugo-book'
+
+enableEmoji = true
+enableRobotsTXT = true
+
+copyRight = "Copyright &copy; 2020 Jim Andreas"
+
+[params]
+  description = "An Android App to do Gamepad Testing"
+  # Hugo Book theme params
+  BookTheme = 'auto'
+  BookToC = true
+  BookSection = 'docs'
+  BookRepo = 'https://github.com/bammellab/GamepadTest'
+  BookEditPath = 'edit/master/website/content'
+  BookDateFormat = 'January 2, 2006'
+  BookSearch = true
+
+[menu]
+  [[menu.after]]
+    name = "GitHub"
+    url = "https://github.com/bammellab/GamepadTest"
+    weight = 10

@@ -1,4 +1,4 @@
-# GamepadTest
+cd# GamepadTest
 
 Currently updating to this Android Studio version.  Some clean up still needed.
 
@@ -96,3 +96,19 @@ https://play.google.com/store/apps/details?id=ru.elron.gamepadtester&hl=en_US
 ### See also
 
 https://forum.unity.com/threads/heres-all-the-buttons-for-a-gamepad-for-android.732698/
+
+## Documentation Site
+
+The documentation site is built with [Hugo](https://gohugo.io/) using the [Hugo Book](https://github.com/alex-shpak/hugo-book) theme.
+
+```bash
+# Local development
+cd website
+hugo server
+
+# Build for production
+cd website
+hugo --minify
+```
+
+The site is deployed automatically to GitHub Pages via GitHub Actions when changes are pushed to the `website/` directory on the `master` branch.
