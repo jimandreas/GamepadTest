@@ -8,9 +8,7 @@ val localProperties = Properties().apply {
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation.safeargs)
-    alias(libs.plugins.kapt)
 }
 
 android {
@@ -21,8 +19,8 @@ android {
         applicationId = "com.bammellab.gamepadtest"
         minSdk = 24
         targetSdk = 36
-        versionCode = 202
-        versionName = "2.0.2"
+        versionCode = 203
+        versionName = "2.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
